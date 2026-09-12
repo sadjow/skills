@@ -66,8 +66,6 @@ into your agent's skill directory. Reload the agent if needed for discovery.
 - [skill-researcher](skills/skill-researcher/SKILL.md)
 - [browser-harness](skills/browser-harness/SKILL.md)
 - [tmux-project-services](skills/tmux-project-services/SKILL.md)
-- [airbrake](skills/airbrake/SKILL.md)
-- [terraform-cloud](skills/terraform-cloud/SKILL.md)
 
 The focused interaction and LiveView skills can be installed separately from the
 broader design and framework skills. Choose the narrowest workflow that fits the
@@ -91,7 +89,7 @@ current specification and installer documentation.
 Markdown-only skills need no runtime. Executable helpers describe their own
 requirements: Python 3 for review and complexity tools, Git and GitHub CLI for
 GitHub operations, tmux for service management, and ffmpeg/ffprobe for frame
-extraction. Browser, API, and Terraform workflows need the relevant configured
+extraction. Browser and API workflows need the relevant configured
 tools and user-provided authentication. Installing a skill does not install those
 tools or authorize an external action.
 
