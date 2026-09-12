@@ -1,0 +1,4 @@
+interface:
+  display_name: "Phoenix LiveView Interaction Resilience"
+  short_description: "Make LiveView interactions immediate and correct"
+  default_prompt: "Use $phoenix-liveview-interaction-resilience to diagnose and harden this LiveView interaction."

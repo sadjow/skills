@@ -1,0 +1,4 @@
+interface:
+  display_name: "Skill Creator"
+  short_description: "Author focused skills and validate their behavior"
+  default_prompt: "Use $skill-creator to create or refine this skill with precise discovery and validation appropriate to its scope."

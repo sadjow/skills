@@ -1,6 +1,6 @@
 ---
 name: expressive-ui-design
-description: Design and refine visually distinctive web interfaces when the user asks for beautiful components, gradients, depth, custom controls, animated borders, or polished idle, focus, press, and tab states. Combine expressive craft with readable typography, intuitive information architecture, useful compact charts, and efficient spacing. Do not activate for a routine functional fix or impose a redesign on an explicitly unchanged surface.
+description: Design distinctive web interfaces through typography, composition, color, and visual detail. Use when visual direction or interface craft is the main task.
 ---
 
 # Expressive UI Design

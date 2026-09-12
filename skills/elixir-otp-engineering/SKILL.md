@@ -1,6 +1,6 @@
 ---
 name: elixir-otp-engineering
-description: Design, implement, diagnose, or review Elixir and OTP systems, including process ownership, supervision, concurrency, Ecto transactions, durable jobs, idempotency, tests, and public documentation. Use for BEAM-specific architecture or production behavior; do not activate for unrelated languages or purely visual Phoenix work.
+description: Design or diagnose Elixir and OTP process ownership, supervision, concurrency, transactions, and durable work. Use for runtime architecture and correctness beyond UI structure.
 ---
 
 # Elixir and OTP Engineering

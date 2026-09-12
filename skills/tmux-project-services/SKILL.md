@@ -1,6 +1,6 @@
 ---
 name: tmux-project-services
-description: Start, inspect, reuse, and stop long-running local project services in tmux. Use for development servers, workers, watchers, and project supervisors that must survive an agent turn or terminal disconnect. Short tests and builds can run directly.
+description: Start, inspect, reuse, or stop long-running project services in tmux. Use for development servers, workers, watchers, and supervisors that must survive a tool call.
 ---
 
 # Project Services in tmux

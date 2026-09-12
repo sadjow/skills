@@ -1,6 +1,6 @@
 ---
 name: browser-harness
-description: "Control the user's signed-in browser session or hosted editors through CDP when browser interaction is needed. In local Codex, check native Computer Use routing first and use browser-harness as fallback. Interactive development and QA can complement repeatable Playwright tests."
+description: "Control signed-in browsers and hosted editors through browser-harness CDP. Use when browser interaction needs this runtime; follow the local client routing guidance first."
 ---
 
 # browser-harness

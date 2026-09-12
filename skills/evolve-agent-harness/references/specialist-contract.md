@@ -10,13 +10,6 @@ Use a harness-evolution specialist for a bounded audit, design, refactor, or ind
 - product adapters disagree or a capability route is not being used reliably
 - parallel read-only investigation would materially reduce elapsed time or context mixing
 
-## Do not activate when
-
-- the work is a one-line instruction correction
-- a deterministic script, test, formatter, or link check can answer the question
-- the task is tightly sequential and delegation would require copying the same large context
-- the user disallows delegation or a human authority decision is still required
-
 ## Evidence packet
 
 Give the specialist only what it needs:
@@ -31,15 +24,14 @@ Do not forward full conversation history when a concise evidence packet is suffi
 
 ## Operating contract
 
-The specialist must use the `evolve-agent-harness` and `improve-project-harness` workflows rather than restating them. It should:
+The specialist must use the `evolve-agent-harness` and `improve-project-agent-harness` workflows rather than restating them. It should:
 
 1. distinguish immediate repair from reusable promotion
 2. identify the smallest reliable control and canonical owner
 3. keep portable capability logic agent-neutral and product adapters thin
 4. preserve full-fidelity project learning without leaking it into personal scope
-5. avoid reviewer swarms and recursive delegation
-6. protect existing outcomes before pruning or moving guidance
-7. validate discovery, original, transfer, boundary, and conflict cases where practical
+5. protect existing outcomes before pruning or moving guidance
+6. validate discovery, original, transfer, boundary, and conflict cases where practical
 
 The coordinator remains responsible for integration, final validation, and user communication.
 

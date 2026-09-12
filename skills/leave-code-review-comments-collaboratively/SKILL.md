@@ -1,6 +1,6 @@
 ---
 name: leave-code-review-comments-collaboratively
-description: Collaborate with a human to turn already surfaced pull-request observations or verified findings into clear, prioritized inline or summary comments, then post only the exact approved target and wording. Use when the user wants to draft, refine, approve, or post feedback on a GitHub pull request. Do not use for the initial walkthrough, broad change understanding, or autonomous finding generation.
+description: Turn existing pull-request observations into clear, prioritized review comments with a human. Use to refine findings and post only the comments the user authorizes.
 ---
 
 # Leave Code Review Comments Collaboratively

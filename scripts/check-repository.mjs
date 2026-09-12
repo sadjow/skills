@@ -7,6 +7,8 @@ const ignored = new Set([
   "node_modules", ".git", "playwright-report", "test-results", "artifacts", "__pycache__"
 ]);
 const textExtensions = new Set([".md", ".yaml", ".yml", ".json", ".mjs", ".ts", ".py", ".sh", ""]);
+const skillNamePattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+const validSkillName = name => typeof name === "string" && name.length <= 64 && skillNamePattern.test(name);
 const publicationPatterns = [
   [/\/Users\/[^/\s]+\//, "absolute personal path"],
   [/-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----/, "private key"],
@@ -59,7 +61,28 @@ export function validateRepository(root) {
 
   const skillsRoot = join(root, "skills");
   if (!existsSync(skillsRoot)) return [...errors, "missing skills directory"];
-  for (const entry of readdirSync(skillsRoot, { withFileTypes: true })) {
+  const skillEntries = readdirSync(skillsRoot, { withFileTypes: true }).filter(entry => entry.isDirectory());
+  const skillNames = new Set(skillEntries.map(entry => entry.name));
+  const renamesPath = join(root, "skill-renames.json");
+  if (files.includes(renamesPath)) {
+    try {
+      const renames = JSON.parse(readFileSync(renamesPath, "utf8"));
+      if (!renames || typeof renames !== "object" || Array.isArray(renames)) {
+        errors.push("skill-renames.json: expected a name mapping");
+      } else {
+        for (const [previous, replacement] of Object.entries(renames)) {
+          if (!validSkillName(previous) || !validSkillName(replacement)) {
+            errors.push("skill-renames.json: invalid skill identifier");
+          }
+          if (skillNames.has(previous)) errors.push(`${previous}: retired skill is still discoverable`);
+          if (!skillNames.has(replacement)) errors.push(`${previous}: rename replacement is not installable`);
+        }
+      }
+    } catch {
+      errors.push("skill-renames.json: invalid JSON");
+    }
+  }
+  for (const entry of skillEntries) {
     if (!entry.isDirectory()) continue;
     const skillPath = join(skillsRoot, entry.name, "SKILL.md");
     if (!existsSync(skillPath)) {
@@ -71,12 +94,15 @@ export function validateRepository(root) {
     try {
       const metadata = frontmatter && parse(frontmatter[1], { uniqueKeys: true });
       if (!metadata || metadata.name !== entry.name ||
-          !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(metadata.name) || metadata.name.length > 64) {
+          !validSkillName(metadata.name)) {
         errors.push(`${entry.name}: invalid frontmatter name`);
       }
       if (typeof metadata?.description !== "string" || !metadata.description.trim() ||
           metadata.description.trim().startsWith("[TODO:")) {
         errors.push(`${entry.name}: missing or unfinished description`);
+      }
+      if (typeof metadata?.description === "string" && metadata.description.length > 1024) {
+        errors.push(`${entry.name}: description exceeds 1024 characters`);
       }
     } catch {
       errors.push(`${entry.name}: invalid YAML frontmatter`);
@@ -86,6 +112,11 @@ export function validateRepository(root) {
       try {
         const agent = parse(readFileSync(agentPath, "utf8"));
         if (!agent || typeof agent !== "object") errors.push(`${entry.name}: invalid agent metadata`);
+        const prompt = agent?.interface?.default_prompt;
+        if (prompt !== undefined && (typeof prompt !== "string" ||
+            !(prompt.match(/\$[a-z0-9]+(?:-[a-z0-9]+)*/g) ?? []).includes(`$${entry.name}`))) {
+          errors.push(`${entry.name}: default prompt must invoke its current skill name`);
+        }
       } catch {
         errors.push(`${entry.name}: invalid agent metadata YAML`);
       }

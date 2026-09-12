@@ -1,6 +1,6 @@
 ---
 name: accessible-web-interactions
-description: Design, implement, review, or test accessible web interactions using WCAG 2.2 AA as the default baseline. Use for semantics, keyboard and touch operation, focus, overlays, live status, forms, contrast, reflow, zoom, large text, target size, reduced motion, or screen-reader behavior; distinguish conformance defects from visual preferences.
+description: Design or test accessible web interactions, including keyboard operation, focus, semantics, overlays, and status messages. Use when implementing or reviewing interaction accessibility.
 ---
 
 # Accessible Web Interactions

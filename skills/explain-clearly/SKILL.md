@@ -1,6 +1,6 @@
 ---
 name: explain-clearly
-description: Explain, teach, simplify, or walk through something so the user forms an accurate mental model and can apply it. Use for code, pull requests, architecture, bugs, technical or nontechnical concepts, decisions, documents, processes, comparisons, and requests to learn, study, remember, or understand how or why something works. Calibrate depth and interaction to the user's goal. Use retrieval and spaced practice only when durable learning is requested. Do not trigger for a bare factual lookup that needs only a direct answer.
+description: Explain a concept, change, or problem so the reader can understand and apply it. Use for explanations, teaching, simplification, and walkthroughs matched to the reader.
 ---
 
 # Explain Clearly

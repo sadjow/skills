@@ -1,0 +1,4 @@
+interface:
+  display_name: "Algorithmic Complexity Optimization"
+  short_description: "Find and reduce code complexity safely"
+  default_prompt: "Use $algorithmic-complexity-optimization to analyze this codebase and give me a full complexity report."

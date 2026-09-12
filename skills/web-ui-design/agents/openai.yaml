@@ -1,0 +1,4 @@
+interface:
+  display_name: "Web UI Design"
+  short_description: "Design clear, responsive, accessible interfaces"
+  default_prompt: "Use $web-ui-design to analyze and improve this interface."

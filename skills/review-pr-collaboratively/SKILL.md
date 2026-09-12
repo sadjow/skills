@@ -1,6 +1,6 @@
 ---
 name: review-pr-collaboratively
-description: Review GitHub pull requests locally with evidence-backed findings, end-to-end use of the explain-clearly skill, and guarded inline-comment posting. Use when asked to check out or review a PR, validate a specification against existing code, understand or explain a change, discuss findings before commenting, draft clear professional review comments, propose comments one at a time for approval, post only approved comments, visualize complex behavior, or prepare a concise team handoff.
+description: Review a GitHub pull request locally with a human, building evidence-backed findings and explaining their impact. Use for PR assessment; post comments only with authorization.
 ---
 
 # Review PR Collaboratively

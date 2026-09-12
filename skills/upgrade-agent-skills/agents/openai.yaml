@@ -1,0 +1,4 @@
+interface:
+  display_name: "Upgrade Agent Skills"
+  short_description: "Research and upgrade existing skill collections"
+  default_prompt: "Use $upgrade-agent-skills to research current official guidance and audit or upgrade this skill collection within the requested scope."

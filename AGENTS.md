@@ -6,15 +6,15 @@ not installed copies. Private skills belong in their separate private repository
 
 - Keep skills portable and free of private operational details, credentials,
   customer data, and author-specific filesystem paths.
-- Preserve each skill's name, supporting resources, and optional agent metadata.
+- Preserve each skill's supporting resources and optional agent metadata. Keep
+  names stable unless an authorized migration records replacements and updates callers.
   Each skill must remain useful when installed on its own; document prerequisites
   and provide a fallback when an optional companion skill is unavailable.
 - Keep framework-specific behavior with its framework skill. Put substantial
   conditional guidance in references and reusable tools in scripts or assets.
 - Record third-party provenance in `UPSTREAMS.md` and preserve upstream licenses.
   Unmodified dependencies belong in the upstream catalog, not in this collection.
-- Read the complete file before editing. Preserve unrelated work. Do not delegate
-  without the user's explicit authorization.
+- Read the complete file before editing. Preserve unrelated work.
 - Do not publish or send external communications without matching authorization.
 
 ## Validation

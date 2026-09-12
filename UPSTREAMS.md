@@ -53,6 +53,25 @@ Keep this package intact. `playwright-reactive-ux-testing` is an authored,
 narrow specialization for temporal and recovery boundaries in reactive UIs;
 it does not replace or vendor the upstream package.
 
+## `skill-creator`
+
+| Field | Value |
+| --- | --- |
+| Local path | `skills/skill-creator/` |
+| Upstream | [Anthropic skill-creator](https://github.com/anthropics/skills/tree/34040c9c568585f6929bedeaad110ad08f079624/skills/skill-creator) |
+| Reviewed revision | `34040c9c568585f6929bedeaad110ad08f079624` |
+| Adapted on | 2026-09-12 |
+| License | Apache-2.0, preserved in `skills/skill-creator/LICENSE.txt` |
+| Import scope | Adapted authoring and evaluation instructions; original license. Upstream CLI, benchmark runner, viewer, and packaging tools are not bundled. |
+| Local owner | This repository owns the portable adaptation; Home Manager consumes its published revision. |
+| Adaptation | Precise discovery, optional resources and packaging, supported frontmatter, proportional evaluation, provider references, and environment-owned permissions. |
+| Refresh direction | Review current upstream against this adaptation; selectively adopt relevant changes without overwriting local boundaries or licenses. |
+
+This replaces the formerly unmodified external creator in consuming
+configurations. The Codex system creator remains owned by Codex; do not edit or
+vendor its installed copy. Use one applicable creator for a task rather than
+loading both definitions merely because they share a name.
+
 ## Installed upstream catalog
 
 These unmodified skills are installed from their upstream repositories. They are
@@ -90,7 +109,6 @@ Use the upstream license and documentation when adopting them.
 | `postgresql-table-design` | [wshobson/agents](https://github.com/wshobson/agents) | `npx skills add wshobson/agents --skill postgresql-table-design` |
 | `rails-expert` | [jeffallan/claude-skills](https://github.com/jeffallan/claude-skills) | `npx skills add jeffallan/claude-skills --skill rails-expert` |
 | `redis-development` | [redis/agent-skills](https://github.com/redis/agent-skills) | `npx skills add redis/agent-skills --skill redis-development` |
-| `skill-creator` | [anthropics/skills](https://github.com/anthropics/skills) | `npx skills add anthropics/skills --skill skill-creator` |
 | `vue` | [antfu/skills](https://github.com/antfu/skills) | `npx skills add antfu/skills --skill vue` |
 
 Plugin-bundled skills remain managed by their plugins and are not copied here.

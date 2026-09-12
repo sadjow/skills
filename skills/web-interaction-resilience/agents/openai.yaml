@@ -1,0 +1,4 @@
+interface:
+  display_name: "Web Interaction Resilience"
+  short_description: "Design latency-resilient UI interactions"
+  default_prompt: "Use $web-interaction-resilience to design this network-backed interaction for immediate feedback, correctness, and recovery."

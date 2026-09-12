@@ -1,6 +1,6 @@
 ---
 name: diagnose-web-performance
-description: Measure, explain, and improve real or perceived web performance without guessing from framework reputation. Use when a page or interaction feels slow, Core Web Vitals regress, mobile users report poor responsiveness, media or rendering is expensive, a team considers preloading, caching, client-state duplication, or a frontend rewrite for speed, or an agent needs an evidence-backed performance plan and validation path.
+description: Measure and diagnose web performance bottlenecks before choosing optimizations. Use for slow interactions, loading or rendering delays, and performance-motivated architecture changes.
 ---
 
 # Diagnose Web Performance
@@ -89,8 +89,8 @@ Replay the same journey and compare:
 - narrow viewport, reduced motion, and reconnect behavior;
 - regressions in authorization, accessibility, SEO, or operations.
 
-Use `$test-responsive-ui` for temporal browser evidence and
-`$design-resilient-interactions` when the measured gap is interaction feedback.
+Use `$playwright-responsive-ui-testing` for temporal browser evidence and
+`$web-interaction-resilience` when the measured gap is interaction feedback.
 
 ## Report clearly
 

@@ -1,0 +1,4 @@
+interface:
+  display_name: "External Code Review Prompt"
+  short_description: "Package repo context for external code review"
+  default_prompt: "Use $external-code-review-prompt to create a self-contained prompt for reviewing the current branch in an external LLM."

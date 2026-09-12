@@ -1,6 +1,6 @@
 ---
 name: evolve-agent-harness
-description: Evolve agent instructions, skills, prompts, checks, scripts, hooks, permissions, and other harness controls from concrete user corrections, review findings, incidents, recurring friction, and agent mistakes. Use proactively when feedback reveals a reusable learning, or when asked to learn from a conversation, codify a finding, improve future agent behavior, derive a personal capability into a project, or retain a generalized project learning personally. Distill the decision failure, decide whether promotion is justified, choose personal, project, or dual retention, select the smallest reliable control, implement only with matching authority, and validate original, transfer, and boundary cases. Do not use merely to fix the immediate task.
+description: Retain reusable lessons from user corrections, review findings, or demonstrated agent failures in the appropriate canonical harness. Use when feedback should improve future agent behavior.
 ---
 
 # Evolve Agent Harness
@@ -163,7 +163,7 @@ Choose the lowest reliable layer:
 
 Prefer improving an existing control over creating another one. Keep one canonical source and use imports, links, or generated adapters when multiple agent products need the same learning.
 
-Promotion does not imply always-loaded placement. Keep global and project entrypoints for authority, safety, stable invariants, and concise routing triggers. Put conditional expertise behind an on-demand skill or scoped document; use a specialist only when independent judgment or context isolation adds value; use executable checks for deterministic behavior.
+Promotion does not imply always-loaded placement. Keep global and project entrypoints for authority, safety, stable invariants, and concise routing triggers. Put conditional expertise behind an on-demand skill or scoped document; use executable checks for deterministic behavior.
 
 Keep portable guidance agent-agnostic. Refer to roles, capabilities, and observable behavior rather than a vendor or model unless the finding is genuinely product-specific. Confine product-specific discovery syntax, UI metadata, hooks, permissions, and tool declarations to thin adapters around the shared guidance.
 
@@ -181,7 +181,7 @@ Prefer:
 
 Do not encode an unresolved product, architecture, or business decision as an agent rule.
 
-When the proposed change spans several control layers, would materially reshape always-loaded context, or needs an independent harness review, read [specialist contract](references/specialist-contract.md). Keep ordinary feedback-to-promotion work in the current agent so the globally discoverable skill remains useful without delegation.
+When the proposed change spans several control layers, would materially reshape always-loaded context, or needs an independent harness review, read [specialist contract](references/specialist-contract.md).
 
 When a skill is the selected control, use the available skill-creation workflow to create or revise it. Use the broader project-harness workflow for deliberate audits, pruning, or changes spanning several control layers. Preserve this event-driven skill as the owner of the feedback-to-promotion decision.
 

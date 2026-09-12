@@ -1,0 +1,4 @@
+interface:
+  display_name: "Locale-Aware Web Inputs"
+  short_description: "Build locale-aware inputs without losing intent"
+  default_prompt: "Use $locale-aware-web-inputs to design and verify this locale-aware input."

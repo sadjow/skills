@@ -5,12 +5,12 @@ web interfaces.
 
 ## Skill routing
 
-- Use `$design-resilient-interactions` for interaction state, optimistic
+- Use `$web-interaction-resilience` for interaction state, optimistic
   feedback, overlays, forms, pending behavior, recovery, and motion.
-- Use `$test-responsive-ui` for Playwright journeys and responsive QA.
+- Use `$playwright-responsive-ui-testing` for Playwright journeys and responsive QA.
 - Use `$diagnose-web-performance` before making a performance-motivated
   architecture change or broad optimization.
-- In Phoenix LiveView projects, also use `$build-resilient-liveview`.
+- In Phoenix LiveView projects, also use `$phoenix-liveview-interaction-resilience`.
 
 ## Interaction contract
 

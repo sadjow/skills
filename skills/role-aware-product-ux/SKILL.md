@@ -1,6 +1,6 @@
 ---
 name: role-aware-product-ux
-description: Analyze, design, or review a product screen from the perspective of each authorized user role, behavioral segment, journey state, and context of use. Use when deciding what a page, map, list, worklist, alert center, dashboard, or settings surface should show; which status, action, or metric is relevant; how first-time and returning experiences should differ; or when clutter, filler statistics, permanent success messages, and competing choices suggest that the interface reflects the system instead of the user's current job.
+description: Design or review screens around authorized roles, behavioral segments, journey states, and context. Use when deciding which information and actions each person needs.
 ---
 
 # Role-Aware Product UX

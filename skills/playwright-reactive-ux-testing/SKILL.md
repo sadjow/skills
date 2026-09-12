@@ -1,6 +1,6 @@
 ---
 name: playwright-reactive-ux-testing
-description: Create, diagnose, or review focused Playwright tests for reactive interfaces where timing and state ownership affect local acknowledgement, rapid input, gesture cancellation, debounced forms, DOM replacement, disconnect/reconnect, reload recovery, focus, responsive geometry, reduced motion, and temporal evidence. Use as a specialization for reactive UX; ordinary Playwright setup or broad browser testing may use a general Playwright workflow alone.
+description: Write focused Playwright regressions for timing, gesture cancellation, DOM replacement, stale replies, and reconnect or reload recovery. Use when event ordering or state ownership causes a UI defect.
 ---
 
 # Playwright Reactive UX Testing
@@ -8,6 +8,11 @@ description: Create, diagnose, or review focused Playwright tests for reactive i
 Use Playwright to prove behavior that a server/component test cannot observe.
 Keep domain logic at its owning test layer and write the smallest browser
 regression that preserves the timing or gesture mechanism.
+
+For viewport configuration, wrapping, overflow, or obscured controls without a
+timing defect, prefer `$playwright-responsive-ui-testing` when available. If it
+is absent, use the host project's viewport fixtures and focused geometry
+assertions; this skill does not require a companion package.
 
 ## Reproduce before repairing
 

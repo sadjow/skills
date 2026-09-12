@@ -1,6 +1,6 @@
 ---
 name: flutter-text-scaling-accessibility
-description: Test, review, or implement Flutter interfaces for large and platform-driven text scaling, including nonlinear TextScaler behavior. Use when Flutter work involves accessibility font sizes, text overflow or clipping, large-text layout support, or claims about Android or iOS text-size settings.
+description: Implement or test Flutter interfaces with large and platform-driven text scaling. Use for TextScaler behavior, clipping, wrapping, and accessible layout under enlarged text.
 ---
 
 # Flutter Text Scaling Accessibility

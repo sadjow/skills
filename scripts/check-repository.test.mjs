@@ -43,3 +43,36 @@ test("reports credential categories without echoing values", t => {
   assert.ok(errors.some(error => error.includes("GitHub credential")));
   assert.ok(errors.every(error => !error.includes(credential)));
 });
+
+test("rejects a rename whose replacement cannot be installed", t => {
+  const root = fixture(t);
+  writeFileSync(join(root, "skill-renames.json"), JSON.stringify({ retired: "missing" }));
+  assert.ok(validateRepository(root).some(error => error.includes("rename replacement")));
+});
+
+test("rejects a retired name that is still a discoverable skill", t => {
+  const root = fixture(t);
+  writeFileSync(join(root, "skill-renames.json"), JSON.stringify({ example: "example" }));
+  assert.ok(validateRepository(root).some(error => error.includes("retired skill")));
+});
+
+test("accepts consolidated predecessors pointing at one installed replacement", t => {
+  const root = fixture(t);
+  writeFileSync(join(root, "skill-renames.json"), JSON.stringify({ first: "example", second: "example" }));
+  assert.deepEqual(validateRepository(root), []);
+});
+
+test("rejects an optional default prompt that invokes the retired identifier", t => {
+  const root = fixture(t);
+  mkdirSync(join(root, "skills/example/agents"));
+  writeFileSync(join(root, "skills/example/agents/openai.yaml"),
+    'interface:\n  default_prompt: "Use $retired to do the task."\n');
+  assert.ok(validateRepository(root).some(error => error.includes("default prompt")));
+});
+
+test("rejects descriptions beyond the specification maximum", t => {
+  const root = fixture(t);
+  writeFileSync(join(root, "skills/example/SKILL.md"),
+    `---\nname: example\ndescription: ${"x".repeat(1025)}\n---\n`);
+  assert.ok(validateRepository(root).some(error => error.includes("1024")));
+});

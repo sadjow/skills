@@ -1,0 +1,18 @@
+{
+  "adapt-business-ux": "business-workflow-ux",
+  "clojure-specialist": "clojure-development",
+  "complexity-optimizer": "algorithmic-complexity-optimization",
+  "design-resilient-interactions": "web-interaction-resilience",
+  "enterprise-ui-ux": "enterprise-backoffice-ux",
+  "external-review-prompt": "external-code-review-prompt",
+  "github-team-review": "github-team-delivery-review",
+  "improve-project-harness": "improve-project-agent-harness",
+  "phoenix-ui-architect": "phoenix-ui-architecture",
+  "pr-screenshots": "github-media-attachments",
+  "semantic-web-inputs": "locale-aware-web-inputs",
+  "skill-researcher": "agent-skill-content-research",
+  "test-responsive-ui": "playwright-responsive-ui-testing",
+  "ui-ux-design": "web-ui-design",
+  "phoenix-liveview-resilient-ux": "phoenix-liveview-interaction-resilience",
+  "build-resilient-liveview": "phoenix-liveview-interaction-resilience"
+}

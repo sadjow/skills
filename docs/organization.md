@@ -18,8 +18,9 @@ skills/<name>/
 
 Keep a coherent task in each skill. Broad framework guidance and a focused
 interaction workflow can coexist when their descriptions distinguish the task.
-Choose one relevant entrypoint before loading overlapping instructions. Retain
-existing names during this migration; consolidation needs evidence from use.
+Choose one relevant entrypoint before loading overlapping instructions. Keep
+names stable once adopted; reviewed migrations use `skill-renames.json` to
+record replacements without retaining duplicate discoverable packages.
 
 Put the workflow needed on every invocation in `SKILL.md`, with explicit triggers
 for loading detailed references. The specification recommends fewer than 500
@@ -27,6 +28,11 @@ lines and about 5,000 tokens in the entrypoint; those are guidance, not an arbit
 installation blocker. Package required local resources inside the same skill.
 An optional companion skill should be discoverable separately, with a fallback
 when unavailable. No skill should depend on the author's checkout paths.
+
+The flat structure remains suitable for a large catalog. Group topics in human
+navigation, select the skills useful to each environment, and keep descriptions
+concise. Directory categories alone do not reduce loaded discovery metadata or
+resolve overlapping capability boundaries.
 
 ## Ownership and discovery
 

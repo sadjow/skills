@@ -1,4 +1,0 @@
-interface:
-  display_name: "Test Responsive UI"
-  short_description: "Test responsive UI behavior with Playwright"
-  default_prompt: "Use $test-responsive-ui to validate this journey across viewports, input modes, latency, and failure states."

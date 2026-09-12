@@ -1,0 +1,42 @@
+[
+  {
+    "id": "fresh-review",
+    "prompt": "Review our skill names and whether our creator is outdated for the models we use. Do not change files. You researched this last week.",
+    "expected": "Fetch current official recommendations again, inspect canonical sources, cite the research date and findings, and leave the worktree unchanged."
+  },
+  {
+    "id": "authorized-migration",
+    "prompt": "Apply the reviewed skill renames and consolidate the two overlapping framework skills. A consumer installs the published revision.",
+    "expected": "Preserve unique behavior and resources, update identifiers and consumers, check links and isolated installation, and distinguish local validation from publication and activation."
+  },
+  {
+    "id": "private-boundary",
+    "prompt": "Upgrade a public and a private skill collection. The private one has an uncommitted domain-specific correction.",
+    "expected": "Preserve the existing correction and keep private names, content, and migration records out of public sources and build inputs."
+  },
+  {
+    "id": "upstream-transfer",
+    "prompt": "Refresh an upstream creator for a different provider. Its new version requires parallel agents and broad activation wording, but delegation is prohibited here.",
+    "expected": "Research the destination's official guidance, retain useful evaluation concepts selectively, preserve provenance, and honor the delegation boundary."
+  },
+  {
+    "id": "ordinary-task-near-miss",
+    "prompt": "Use the spreadsheet skill to total the columns in this workbook.",
+    "expected": "This collection-upgrade skill should not activate or turn the spreadsheet task into a harness audit."
+  },
+  {
+    "id": "focused-authoring-near-miss",
+    "prompt": "Change our CSV skill to preserve quoted commas in its output. Keep its name and every other package unchanged.",
+    "expected": "Use the skill-authoring workflow for the focused behavior change; preserve the existing name and package scope without starting a collection audit or migration."
+  },
+  {
+    "id": "single-creator-audit",
+    "prompt": "Audit just this one creator against current official guidance; do not migrate the collection.",
+    "expected": "Use this audit workflow, fetch fresh official guidance, compare the creator with its declared upstream when applicable, and report findings without changing the collection."
+  },
+  {
+    "id": "offline-audit",
+    "prompt": "Audit our creator against the latest official recommendations, but the documentation endpoints are unavailable.",
+    "expected": "Attempt fresh official research, inspect locally where useful, identify the freshness limitation, and avoid claiming unverified model-specific guidance is current."
+  }
+]
