@@ -1,0 +1,20 @@
+{
+  "name": "@sadjow/skills",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Reusable agent skills for engineering, UI design, reviews, and agent workflows",
+  "license": "MIT",
+  "scripts": {
+    "check": "npm run typecheck && npm run check:content && npm run test:validation && npm run check:scripts",
+    "check:content": "node scripts/check-repository.mjs",
+    "typecheck": "tsc --noEmit",
+    "test:validation": "node --test scripts/check-repository.test.mjs",
+    "check:scripts": "python3 scripts/check-scripts.py"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.62.1",
+    "@types/node": "^26.1.2",
+    "typescript": "^7.0.2",
+    "yaml": "^2.9.1"
+  }
+}

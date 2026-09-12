@@ -1,0 +1,160 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+input_dir="${1:-test-results}"
+output_root="${2:-artifacts/motion-review}"
+
+for command_name in ffmpeg ffprobe; do
+  if ! command -v "$command_name" >/dev/null 2>&1; then
+    echo "$command_name is required to extract Playwright video frames." >&2
+    exit 1
+  fi
+done
+
+if command -v sha256sum >/dev/null 2>&1; then
+  calculate_sha256() {
+    sha256sum
+  }
+elif command -v shasum >/dev/null 2>&1; then
+  calculate_sha256() {
+    shasum -a 256
+  }
+else
+  echo "sha256sum or shasum is required to identify captured videos." >&2
+  exit 1
+fi
+
+if [[ ! -d "$input_dir" ]]; then
+  echo "No Playwright results directory found at $input_dir." >&2
+  exit 1
+fi
+
+mkdir -p "$output_root"
+manifest="$output_root/manifest.txt"
+: >"$manifest"
+video_count=0
+max_detailed_frames=240
+contact_sheet_frames=20
+current_temporary_destination=""
+
+cleanup_temporary_destination() {
+  if [[ -n "$current_temporary_destination" ]]; then
+    rm -rf "$current_temporary_destination"
+  fi
+}
+
+trap cleanup_temporary_destination EXIT INT TERM
+
+while IFS= read -r -d '' video; do
+  video_count=$((video_count + 1))
+  relative="${video#"$input_dir"/}"
+  path_hash="$(printf '%s' "$relative" | calculate_sha256 | cut -c1-12)"
+  slug="$(printf '%s' "$relative" | tr '/ :' '---' | tr -cd '[:alnum:]_.-')"
+  slug="${slug%.webm}"
+  destination="$output_root/${slug}-${path_hash}"
+  temporary_destination="${destination}.tmp.$$"
+  current_temporary_destination="$temporary_destination"
+  frames="$temporary_destination/frames"
+
+  rm -rf "$temporary_destination"
+  mkdir -p "$frames"
+  cp "$video" "$temporary_destination/source.webm"
+
+  format_duration="$(
+    ffprobe -v error \
+      -show_entries format=duration \
+      -of default=noprint_wrappers=1:nokey=1 \
+      "$video" 2>/dev/null || true
+  )"
+
+  packet_duration="$(
+    ffprobe -v error \
+      -select_streams v:0 \
+      -show_entries packet=pts_time \
+      -of csv=p=0 \
+      "$video" 2>/dev/null |
+      awk '
+        $1 ~ /^[0-9]+([.][0-9]+)?$/ && ($1 + 0) > max { max = $1 + 0 }
+        END { if (max > 0) printf "%.6f", max }
+      ' || true
+  )"
+
+  duration="$(
+    awk -v format_duration="$format_duration" -v packet_duration="$packet_duration" '
+      function valid(value) {
+        return value ~ /^[0-9]+([.][0-9]+)?$/ && (value + 0) > 0
+      }
+
+      BEGIN {
+        if (valid(format_duration)) {
+          printf "%.6f", format_duration
+        } else if (valid(packet_duration)) {
+          printf "%.6f", packet_duration
+        }
+      }
+    '
+  )"
+
+  if [[ -z "$duration" ]]; then
+    printf 'Could not determine a safe duration for %s; source may be incomplete.\n' \
+      "$video" >"$temporary_destination/INVALID_SOURCE.txt"
+    rm -rf "$frames"
+  else
+    detailed_rate="$(
+      awk -v duration="$duration" -v maximum="$max_detailed_frames" '
+        BEGIN {
+          rate = maximum / duration
+          if (rate > 8) rate = 8
+          if (rate <= 0) rate = 0.01
+          printf "%.8f", rate
+        }
+      '
+    )"
+    contact_rate="$(
+      awk -v duration="$duration" -v maximum="$contact_sheet_frames" '
+        BEGIN {
+          rate = maximum / duration
+          if (rate > 8) rate = 8
+          if (rate <= 0) rate = 0.01
+          printf "%.8f", rate
+        }
+      '
+    )"
+
+    ffmpeg -nostdin -hide_banner -loglevel error -y \
+      -i "$video" \
+      -vf "fps=${detailed_rate},scale='min(1280,iw)':-2:flags=lanczos" \
+      -frames:v "$max_detailed_frames" \
+      "$frames/frame-%05d.png"
+
+    ffmpeg -nostdin -hide_banner -loglevel error -y \
+      -i "$video" \
+      -vf "fps=${contact_rate},scale=320:-2:flags=lanczos,tile=5x4:padding=8:margin=8:color=white" \
+      -frames:v 1 \
+      "$temporary_destination/contact-sheet.png"
+  fi
+
+  rm -rf "$destination"
+  mv "$temporary_destination" "$destination"
+  current_temporary_destination=""
+
+  {
+    printf 'video=%s\n' "$video"
+    printf 'duration_seconds=%s\n' "$duration"
+    printf 'source_copy=%s\n' "$destination/source.webm"
+    if [[ -f "$destination/contact-sheet.png" ]]; then
+      printf 'contact_sheet=%s\n' "$destination/contact-sheet.png"
+      printf 'frames=%s\n' "$destination/frames"
+    else
+      printf 'invalid_source=%s\n' "$destination/INVALID_SOURCE.txt"
+    fi
+    printf '\n'
+  } >>"$manifest"
+done < <(find "$input_dir" -type f -name '*.webm' -print0)
+
+if [[ "$video_count" -eq 0 ]]; then
+  echo "No .webm captures found below $input_dir. Run Playwright with E2E_CAPTURE=1." >&2
+  exit 1
+fi
+
+echo "Created motion-review artifacts for $video_count video(s) in $output_root."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Diagnose Web Performance"
+  short_description: "Diagnose real and perceived web performance"
+  default_prompt: "Use $diagnose-web-performance to measure this slow web journey and identify the smallest evidence-backed improvement."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Build Resilient LiveView"
+  short_description: "Build resilient Phoenix LiveView interactions"
+  default_prompt: "Use $build-resilient-liveview to implement this Phoenix LiveView interaction with immediate feedback and reconnect-safe correctness."

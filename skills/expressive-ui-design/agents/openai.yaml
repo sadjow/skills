@@ -1,0 +1,4 @@
+interface:
+  display_name: "Expressive UI Design"
+  short_description: "Create distinctive, readable UI with purposeful motion"
+  default_prompt: "Use $expressive-ui-design to refine this interface with a strong visual direction, readable typography, clear information architecture, and deliberate interaction states."
