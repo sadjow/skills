@@ -43,8 +43,10 @@ collection or add and remove controls beside the focused one:
 
 - keep choosable items in a stable order and show the changing order separately,
   so choosing an item never moves its control;
-- key reorderable rows by position and render every row's controls on each
-  patch, disabling those that do not apply;
+- key reorderable rows by position and keep every row's element structure
+  identical across patches: render each row's controls, disabling those that do
+  not apply, and toggle optional content inside a stable wrapper rather than
+  adding or swapping sibling elements;
 - direct any post-action focus command at a control that exists both before and
   after the patch.
 
