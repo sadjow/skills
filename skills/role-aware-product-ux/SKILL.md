@@ -146,6 +146,25 @@ legal, safety, or truthful-representation boundaries. Surface an unresolved
 conflict to the authority that can decide it instead of silently obeying or
 silently substituting another design.
 
+## Match vocabulary to the audience
+
+When one capability serves customers and internal operators, keep one term per
+concept for each audience.
+
+- In customer copy about monitoring, diagnostics, or service status, make the
+  provider the actor and describe the outcome and the next step the reader can
+  take.
+- Keep equipment, protocol, pipeline, and audit vocabulary on operator
+  surfaces, where people use it to diagnose and repair.
+- Do not ask customers to verify, restart, or confirm the provider's own
+  equipment; route them to the provider.
+- Record the audience glossary in the project's terminology source. When the
+  copy spans several channels, enforce the avoided customer terms with a test
+  over rendered output.
+
+Use the technical vocabulary for customers who operate the equipment
+themselves, such as administrators of self-hosted systems.
+
 ## Produce a decision package
 
 Return or record:
