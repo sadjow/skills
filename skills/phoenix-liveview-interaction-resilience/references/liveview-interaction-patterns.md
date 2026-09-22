@@ -34,6 +34,32 @@ row, form, or shell rather than only the clicked element:
 Prefer JS commands over a custom hook when the behavior is expressible as a
 short patch-aware command sequence.
 
+## Patch identity and focus
+
+A patch that moves a node blurs the focused element inside it. Reordering keyed
+siblings, inserting a keyed sibling before it, or removing a keyed sibling that
+precedes it can each move the node. When an interaction can reorder a
+collection or add and remove controls beside the focused one:
+
+- keep choosable items in a stable order and show the changing order separately,
+  so choosing an item never moves its control;
+- key reorderable rows by position and render every row's controls on each
+  patch, disabling those that do not apply;
+- direct any post-action focus command at a control that exists both before and
+  after the patch.
+
+Collections whose order and controls never change while focused need none of
+this.
+
+Patches also reset attributes the browser toggles, such as `open` on `details`
+or `dialog`, to the server-rendered value. Where the pinned version provides
+`JS.ignore_attributes/1`, apply it from `phx-mounted` and render only the
+initial value; keep the open state on the server when the server must close the
+element itself.
+
+Server-rendered test harnesses do not patch a live DOM, so prove focus
+retention and toggled attributes in a real browser.
+
 ## Hooks
 
 Use a focused hook when behavior needs:
