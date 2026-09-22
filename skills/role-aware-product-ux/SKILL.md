@@ -146,24 +146,24 @@ legal, safety, or truthful-representation boundaries. Surface an unresolved
 conflict to the authority that can decide it instead of silently obeying or
 silently substituting another design.
 
-## Match vocabulary to the audience
+## Write in plain language for every role
 
-When one capability serves customers and internal operators, keep one term per
-concept for each audience.
+A role does not establish technical fluency. Administrators, support staff,
+and customers can all miss the meaning of equipment, protocol, pipeline, or
+audit jargon, so write every user-facing surface in plain language.
 
-- In customer copy about monitoring, diagnostics, or service status, make the
-  provider the actor and describe the outcome and the next step the reader can
-  take.
-- Keep equipment, protocol, pipeline, and audit vocabulary on operator
-  surfaces, where people use it to diagnose and repair.
+- In copy about monitoring, diagnostics, or service status, make the provider
+  the actor and describe the outcome and the next step the reader can take.
+- Use one plain term per concept across channels and roles.
+- Keep a technical term only as secondary detail where someone must identify
+  or repair equipment, and explain it in plain words.
 - Do not ask customers to verify, restart, or confirm the provider's own
   equipment; route them to the provider.
-- Record the audience glossary in the project's terminology source. When the
-  copy spans several channels, enforce the avoided customer terms with a test
-  over rendered output.
+- Record the glossary in the project's terminology source. When the copy spans
+  several channels, enforce the avoided terms with a test over rendered output.
 
-Use the technical vocabulary for customers who operate the equipment
-themselves, such as administrators of self-hosted systems.
+Keep technical vocabulary where the reader asked for it or works directly with
+the technology, such as engineers reading logs or raw payloads.
 
 ## Produce a decision package
 
