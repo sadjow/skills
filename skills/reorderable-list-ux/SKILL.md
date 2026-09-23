@@ -109,6 +109,11 @@ drag mode.
   reply re-renders it, while it still carries the previous render's payload.
   The authoritative boundary ignores or rejects the command when the item is
   no longer there, so a fast second press never moves a neighbor.
+- When a view can switch the list it shows in place, such as by choosing a
+  parent record from a menu, the list is part of the drawn state. Send its
+  identity with each move and ignore a move drawn for another list. An item in
+  both lists can hold the same position in each, so the position check alone
+  would pass. A drag keeps the identity it was grabbed under.
 - Browser guards, such as disabling the buttons while a save is pending,
   improve responsiveness but do not replace the server check.
 
@@ -124,6 +129,8 @@ when installed. For LiveView patches, hooks, and focus, use
 - Repeated presses keep moving the same item. At the ends, focus moves to the
   other button and never lands on the page body.
 - Two presses sent before the first reply never move a neighbor.
+- A move sent just before the view switches lists never changes the newly
+  shown list.
 - With two views open, a move from the older view is rejected and its list
   reloads with an explanation. Focus lands on the moved item's control and
   stays there through the next frames.
@@ -136,6 +143,11 @@ when installed. For LiveView patches, hooks, and focus, use
   disabled buttons stay distinguishable, with 3:1 contrast where WCAG 1.4.11
   applies.
 - The list reflows at 320 CSS pixels and works with reduced motion.
+
+Reproduce the in-flight cases by capturing the payload a control carries before
+the reply and sending it afterward. A hand-built payload can be refused by an
+earlier check, so the test passes without reaching the check it names. Confirm
+that each such test fails with its check removed.
 
 Read [research and validation](references/research-and-validation.md) when
 maintaining this skill or resolving a disputed recommendation.

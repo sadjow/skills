@@ -30,6 +30,11 @@ behavior fails for the intended reason. If red-first execution would mutate a
 live system, depend on unreliable timing, or require unavailable infrastructure,
 state that boundary and add the regression immediately after the fix.
 
+A test asserting that nothing happened passes whenever any earlier check
+refuses its input. Build that input from what the real caller sends, and
+confirm the test fails with the check it names removed, again whenever a new
+check is added in front of it.
+
 ## Use line coverage as a diagnostic
 
 Prefer the coverage engine already provided by the pinned Elixir toolchain

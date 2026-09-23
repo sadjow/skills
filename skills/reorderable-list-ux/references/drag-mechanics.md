@@ -46,7 +46,8 @@ item or leave the list in an unclear state.
 - Apply the new order immediately, then save it. A drop at the starting
   position sends nothing.
 - Send one move per drop: the item, its destination, and the order or version
-  the list was drawn from.
+  the list was drawn from. Read the list's identity when the drag starts,
+  because the view can switch to another list before the drop.
 - Animate displaced rows from their old positions to their new ones with a
   transform (measure first, then invert and play), about 100 to 200 ms, easing
   in and out.

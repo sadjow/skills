@@ -114,6 +114,12 @@ drawn with, and have the boundary ignore or reject a mismatch. A local guard on
 the initiating control does not protect another control that just received
 focus.
 
+That state includes the collection when a view can redraw the same controls for
+another one, such as after choosing a different parent record. An item in both
+collections can hold the same position in each, so also send the identity of
+the collection the control was drawn for. A gesture that spans the switch, such
+as a drag, keeps the identity it started with.
+
 ## Immediate overlays
 
 Opening a modal, sheet, drawer, menu, or composer is a local interaction.
@@ -199,6 +205,8 @@ next intentional request.
 - Rapid repeated input creates the intended number of operations.
 - A relative command repeated before the first reply applies to the item it was
   drawn for or is rejected; it never acts on a neighbor.
+- A command drawn for one collection and received after the view switched to
+  another never changes the new collection.
 - A rejected outcome is correctable without losing unrelated draft state.
 - Cancellation prevents a late response from reopening or replacing the UI.
 - Loading, ready, and error states use stable geometry.

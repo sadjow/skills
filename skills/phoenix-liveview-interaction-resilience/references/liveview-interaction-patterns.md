@@ -62,6 +62,12 @@ neighbor's command. Send the item's drawn position or the order version with
 the item, and have the handler ignore the event when the item is no longer
 there. Test it by replaying the pre-reply payload after a first move.
 
+A patch that redraws the same rows for another collection, such as a list
+chosen by a URL parameter, keeps their elements the same way, and an item in
+both collections can hold the same position in each. Send the collection the
+control was drawn for too: in each `JS.push` payload, and in a `data-*`
+attribute that a drag hook reads when the drag starts rather than when it ends.
+
 `JS.focus` and `JS.focus_first` also focus again two animation frames later, on
 the element they found when the command ran, so a `JS.show` earlier in the
 chain can finish first. LiveView 1.2 does this; confirm it in the pinned

@@ -8,7 +8,7 @@ Use context and LiveView tests to prove:
 - visible actionable errors;
 - duplicate and stale-attempt guards;
 - relative commands, such as move up, replayed with the payload their control
-  carried before the previous reply;
+  carried before the previous reply or before a patch switched its collection;
 - browser-only commands a control must carry, such as its focus request, read
   by decoding its `phx-click` JSON, because the LiveView test client runs only
   a chain's `push`, `patch`, and `navigate` commands;
@@ -18,6 +18,11 @@ Use context and LiveView tests to prove:
 
 Reference stable DOM IDs in LiveView tests and assert outcomes rather than raw
 HTML strings.
+
+Read a replayed payload from the rendered control, such as by decoding its
+`phx-click` JSON, instead of writing the map by hand. A map missing a field the
+control sends can be refused by an earlier guard, so a test asserting that
+nothing changed passes without reaching the guard it names.
 
 ## Playwright latency
 
