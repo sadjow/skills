@@ -34,6 +34,7 @@ one design system are examples, not universal requirements.
 - Community guidance to prefer APCA does not change the WCAG 2.2 AA requirement.
 - The roughly 20-item threshold for move to top or a position dialog, flipping focus to the other button at the ends, and sending relative commands with their drawn position and, when the view can switch lists, the list's identity come from review reasoning, not a cited source. Revisit them when evidence contradicts them.
 - One focus owner for the press and the reply comes from a browser reproduction, not a cited source: a framework focus command retried two animation frames after the press and undid the focus a faster reply had returned to the moved item.
+- The leading-edge trigger for a clamped drag comes from a reproduced failure and geometry, not a cited source. A center-to-center comparison left a clamped row that was taller than the end row unable to reach the last position. NN/g's center-to-edge trigger fails the same way once the row is more than twice the end row's height, and it agrees with the leading-edge trigger for rows of equal height.
 
 ## Promotion decision
 
@@ -42,9 +43,10 @@ no visible confirmation, a quick second press could move the neighboring item,
 the lifted row glowed in the dark theme, and the handle resembled a menu icon.
 A later flow review found that a move drawn for one list could reorder another
 list that the same view switched to, when a shared item held the same position
-in both. The skills collection had no owner for reordering; its only examples
-used deprecated ARIA drag attributes. The portable method belongs in this
-on-demand skill.
+in both. Another review found that a drag clamped to the list could not carry a
+row past a shorter end row. The skills collection had no owner for reordering;
+its only examples used deprecated ARIA drag attributes. The portable method
+belongs in this on-demand skill.
 
 Canonical owner: this skill in the personal skills repository. General timing,
 single-flight, and reconciliation rules stay in Web Interaction Resilience;
@@ -64,6 +66,8 @@ forward evaluation. Do not load them for ordinary UI work.
 | Admin list of display categories that saves each move at once | Buttons plus handle, visible and announced confirmation, compare and set, moves carry the drawn position | Covers the original findings |
 | Image order inside an edit form, saved with the form | Same controls; the message says the order is saved with the form; no per-move request | Transfers to deferred saves |
 | Per-group order where a menu switches the group in place | Moves carry the group they were drawn for; a drag keeps the group it was grabbed under; a move drawn for the previous group is ignored | Transfers to a list redrawn for another collection |
+| Rows of mixed height, with the drag clamped to the list | The leading edge is compared with neighbor centers, so the tallest row reaches both ends | Transfers to wrapped or variable-height rows |
+| Unclamped drag of equal-height rows | Either trigger form; both swap after half a row | Stays silent where clamping is absent |
 | Board with cards moving between columns | Move menu or dialog naming the destination; drag as an accelerator | Marked as an extension, not forced into one-list rules |
 | Priority list of 200 items | Move to top and bottom or a position dialog; announcements include the old position for jumps | Covers long lists |
 | Mobile-first list | Move menu or buttons first; handle-only touch drag with press and hold | Keeps touch scrolling intact |

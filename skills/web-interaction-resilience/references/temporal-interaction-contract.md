@@ -179,6 +179,19 @@ Do not send mount-time defaults that may arrive after typing and overwrite
 newer input. Write browser-derived defaults locally and include them in the
 next intentional request.
 
+A draft restored after a reconnect or reload was written against the version
+of the record it was drawn from, not the version the page reloads. Keep that
+version with the draft and have the save check it, so a save someone else made
+in between is reported as a conflict instead of overwritten. When the reply to
+the user's own save is lost to the disconnect, the check reports a false
+conflict; prefer that to a silent overwrite.
+
+A restored or submitted form can be partial. Browsers omit disabled controls,
+so a read-only form restores only whatever enabled control it still contains,
+such as a stray hidden field. Treat a field missing from the payload as unknown
+rather than cleared, send an explicit empty value for a list the user emptied,
+and keep every control of a read-only form disabled, hidden fields included.
+
 ## Failure, recovery, and focus
 
 - Keep the failure near the action and explain what can be done.
@@ -208,6 +221,8 @@ next intentional request.
 - A command drawn for one collection and received after the view switched to
   another never changes the new collection.
 - A rejected outcome is correctable without losing unrelated draft state.
+- A draft restored after a reconnect saves against the version it was drawn
+  from, and a partial restore never clears fields it did not carry.
 - Cancellation prevents a late response from reopening or replacing the UI.
 - Loading, ready, and error states use stable geometry.
 - Keyboard focus remains visible and returns logically.

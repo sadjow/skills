@@ -32,9 +32,14 @@ item or leave the list in an unclear state.
   dimmed (Atlassian uses 40% opacity), while a separate preview moves.
 - Reshuffle the other rows live, or draw a drop indicator line between rows,
   such as a 2 px line with a small circle at its start.
-- Reshuffle when the center of the dragged row crosses the edge of a
-  neighbor. Reacting to the pointer position or the dragged row's edge feels
-  sluggish or twitchy.
+- Reshuffle once the dragged row has traveled about half a row: when its center
+  reaches a neighbor's edge, or its leading edge reaches the neighbor's center,
+  which is the same point for rows of equal height. Reacting to the pointer
+  position feels sluggish, and reacting as soon as edges overlap feels twitchy.
+- When the dragged row is clamped inside the list, compare its leading edge
+  with each neighbor's center. A clamped row stops flush with the end row, so
+  under the center rule a row more than twice as tall as that row can never
+  reach the last position.
 - Scroll the list or page when the pointer nears its edge.
 - Escape, a cancelled pointer, and a drop outside the list restore the original
   order and save nothing.
