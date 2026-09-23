@@ -20,6 +20,21 @@ Start broad, then narrow based on findings:
 2. `"[domain] production lessons learned"` - battle-tested insights
 3. `"[domain] testing strategies"` - quality assurance
 
+### Published skills on the subject
+Search skill directories and GitHub for published skills on the same subject,
+then read the most installed and the most specific ones. Use them as a coverage
+map and a source of questions: install counts measure popularity, not
+correctness. Trace each rule you keep to a primary source, and record where a
+community rule conflicts with the governing contract, such as a contrast method
+the product's accessibility standard does not use.
+
+### Design and interaction subjects
+Compare several independent design systems and published usability research on
+the same pattern. Read token source files for exact durations, elevations, and
+colors instead of copying numbers from secondary write-ups. Treat one system's
+values as examples. Keep a rule when independent sources agree or a standard
+requires it, and resolve conflicts toward the governing standard.
+
 ## Source Evaluation
 
 ### Priority order

@@ -13,7 +13,9 @@ work.
 
 Every drag, swipe, or pan action needs a button, direct selection, or other
 single-pointer alternative. A surface that scrolls must cancel activation when
-movement changes the gesture from tap to pan.
+movement changes the gesture from tap to pan. For reordering a list, use
+[Reorderable List UX](https://github.com/sadjow/skills/tree/main/skills/reorderable-list-ux)
+when installed.
 
 ## Visible indicators and modality
 

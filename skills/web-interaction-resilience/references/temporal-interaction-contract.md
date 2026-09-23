@@ -105,6 +105,15 @@ are omitted from form submission. Prefer a pattern that preserves the intended
 payload while preventing interaction, and verify the serialized values under
 latency.
 
+A relative command, such as move up, next, or increment, only has meaning
+against the state its control was drawn from. When focus or a click reaches a
+control before the reply re-renders it, that control still carries the previous
+render's payload, and the boundary would apply the command to a different item
+or value. Send the item with the position, value, or version the control was
+drawn with, and have the boundary ignore or reject a mismatch. A local guard on
+the initiating control does not protect another control that just received
+focus.
+
 ## Immediate overlays
 
 Opening a modal, sheet, drawer, menu, or composer is a local interaction.
@@ -128,6 +137,9 @@ A late response must not reopen a surface the user already closed.
 - Animate ordinary feedback with `opacity` and `transform`.
 - Avoid animating width, height, padding, top, or other layout dimensions.
 - Use short motion, commonly 160–240 ms, as an explanation of state change.
+- Delay a pending indicator by about 150–300 ms and, once shown, keep it for
+  about 300–500 ms so fast responses do not flicker. The control's own
+  acknowledgement stays immediate.
 - Remove nonessential translation, scale, smooth scrolling, and repeated
   effects for `prefers-reduced-motion: reduce`.
 
@@ -168,6 +180,13 @@ next intentional request.
 - Re-enable the correct control group exactly once.
 - Restore focus to the initiating control, first invalid field, or new result
   according to the journey.
+- When the press and the reply can both set focus, such as a move whose reply
+  may reject it and reload the list, route both requests through one owner that
+  applies each at once. A framework focus helper can retry later, such as after
+  animation frames, on the element it found at the press; when the reply lands
+  first, the retry undoes the reply's focus. Background tabs pause animation
+  frames, so the retry can come long after the reply, which also makes the race
+  reproducible.
 - Use one calm connection-status owner during reconnect; do not stack several
   alerts for the same loss.
 - Announce meaningful changes with an appropriate live region without narrating
@@ -178,10 +197,14 @@ next intentional request.
 - Input is acknowledged before the delayed response.
 - Only one pending owner is visible.
 - Rapid repeated input creates the intended number of operations.
+- A relative command repeated before the first reply applies to the item it was
+  drawn for or is rejected; it never acts on a neighbor.
 - A rejected outcome is correctable without losing unrelated draft state.
 - Cancellation prevents a late response from reopening or replacing the UI.
 - Loading, ready, and error states use stable geometry.
 - Keyboard focus remains visible and returns logically.
+- When the press and the reply both set focus, focus ends where the reply put
+  it, even when the reply arrives before the next frame.
 - Reduced-motion behavior preserves the same state model.
 - The narrowest viewport has no unintended horizontal overflow.
 - Stateful or durable work recovers after a real reconnect.

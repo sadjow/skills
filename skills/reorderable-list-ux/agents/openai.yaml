@@ -1,0 +1,4 @@
+interface:
+  display_name: "Reorderable List UX"
+  short_description: "Build accessible, reliable list reordering"
+  default_prompt: "Use $reorderable-list-ux to design or review how people reorder this list, including move controls, focus, feedback, and stale-order protection."

@@ -32,6 +32,7 @@ into your agent's skill directory. Reload the agent if needed for discovery.
 - [expressive-ui-design](skills/expressive-ui-design/SKILL.md)
 - [enterprise-backoffice-ux](skills/enterprise-backoffice-ux/SKILL.md)
 - [accessible-web-interactions](skills/accessible-web-interactions/SKILL.md)
+- [reorderable-list-ux](skills/reorderable-list-ux/SKILL.md)
 - [locale-aware-web-inputs](skills/locale-aware-web-inputs/SKILL.md)
 - [role-aware-product-ux](skills/role-aware-product-ux/SKILL.md)
 - [business-workflow-ux](skills/business-workflow-ux/SKILL.md)
@@ -77,6 +78,7 @@ task; installing every overlapping skill is optional.
 | Task | Start with | Add when needed |
 | --- | --- | --- |
 | General web interface work | `web-ui-design` | `expressive-ui-design` for visual craft; `accessible-web-interactions` for interaction accessibility |
+| Manual list ordering or drag and drop | `reorderable-list-ux` | `web-interaction-resilience` for save timing and conflicts; `phoenix-liveview-interaction-resilience` for LiveView patches and focus |
 | LiveView UI implementation | `phoenix-ui-architecture` | `phoenix-liveview-interaction-resilience` for timing, forms, uploads, recovery, and its reconnect helper |
 | Reactive UI testing | `playwright-reactive-ux-testing` | `playwright-responsive-ui-testing` for the bundled viewport and capture starter kit |
 | Responsive layout testing | `playwright-responsive-ui-testing` | `playwright-reactive-ux-testing` when a failure depends on event ordering or recovery |

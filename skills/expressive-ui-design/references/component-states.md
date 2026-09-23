@@ -32,7 +32,13 @@ does not automatically satisfy that criterion.
 Do not couple navigation or removal to `animationend`: disabling animation,
 interruption, or a background tab must not strand the operation. On rapid input,
 retarget from the current presentation or complete immediately instead of
-queuing every decorative transition.
+queuing every decorative transition. CSS transitions retarget; keyframe
+animations restart from their first frame.
+
+Skip movement for actions a person repeats many times a day, such as keyboard
+shortcuts and repeated list moves, and change the state at once. Ease out for
+elements that enter or leave, ease in and out for elements that move on screen,
+and avoid ease-in, which delays the first visible response.
 
 ## Border, button, and tab patterns
 
@@ -75,6 +81,23 @@ Minimal press pattern to adapt to the product's tokens:
 
 This example does not imply loading, require dark mode, or certify contrast
 for unknown token values.
+
+## Surfaces, depth, and media
+
+- Build shadows from black in every theme. A dark surface needs a more opaque
+  shadow to show depth, and a faint light ring can define the edge where the
+  shadow disappears. A shadow mixed from the text color turns light in a dark
+  theme and makes the element glow.
+- Put a fixed or white backdrop only behind media that needs it, such as a
+  logo drawn for light backgrounds. Show an empty media slot on the base
+  surface with a dashed border, an icon, and text, so it reads as empty rather
+  than as a blank image.
+- Outline color swatches and images with a neutral, low-opacity ring, such as
+  black at 10% in light themes and white at 10% in dark themes, so pale colors
+  and light images keep an edge. Do not tint the ring with the palette. Pair a
+  swatch with its name or value in text.
+- Review each treatment in every supported theme. A screenshot in one theme
+  hides defects in the other.
 
 ## Verification traps
 

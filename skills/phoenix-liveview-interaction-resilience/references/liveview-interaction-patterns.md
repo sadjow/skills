@@ -13,8 +13,12 @@ Keep the loading and ready content in one stable shell. Avoid replacing an icon
 or label with different geometry. Use a meaningful `aria-busy` owner when the
 visible task is pending.
 
-LiveView ignores additional clicks from an element awaiting acknowledgement,
-but an authoritative duplicate guard is still required when retries, multiple
+LiveView ignores additional clicks on a bound element that is itself awaiting
+acknowledgement. A `JS.push` `loading` selector marks the elements it matches
+the same way, so a selector that matches sibling buttons also suppresses their
+clicks until the reply; one that matches only their container does not. Treat
+either as responsiveness and confirm it in a browser for the pinned version. An
+authoritative duplicate guard is still required when retries, multiple
 controls, multiple tabs, or background workers can produce the same mutation.
 
 ## Phoenix.LiveView.JS
@@ -49,6 +53,24 @@ collection or add and remove controls beside the focused one:
   adding or swapping sibling elements;
 - direct any post-action focus command at a control that exists both before and
   after the patch.
+
+Position keying has a cost for relative commands such as move up. `JS.focus`
+runs before the reply, so after a move it lands on the control that rendered
+the neighbor at that position, which keeps the neighbor's `phx-value-*` or
+`JS.push` payload until the patch arrives. A quick second press then sends the
+neighbor's command. Send the item's drawn position or the order version with
+the item, and have the handler ignore the event when the item is no longer
+there. Test it by replaying the pre-reply payload after a first move.
+
+`JS.focus` and `JS.focus_first` also focus again two animation frames later, on
+the element they found when the command ran, so a `JS.show` earlier in the
+chain can finish first. LiveView 1.2 does this; confirm it in the pinned
+client's `exec_focus`. When the server can also set focus in its reply, such as
+returning focus to an item after rejecting a stale move, that retry undoes the
+reply's focus whenever the reply arrives first. Route both requests through one
+hook instead: chain `JS.dispatch` of a custom event from the control for the
+press-time focus, receive the server's `push_event` with `handleEvent`, and
+focus at once in both. Keep `JS.focus` where no reply sets focus.
 
 Collections whose order and controls never change while focused need none of
 this.

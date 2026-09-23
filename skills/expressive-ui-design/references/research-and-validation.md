@@ -15,6 +15,13 @@ universal requirements.
 - [web.dev animation performance](https://web.dev/articles/animations-guide) explains rendering costs and inspection. Prefer transform and opacity for routine motion; measure paint-heavy treatments.
 - [MDN typed custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@property) documents registration. Treat animated gradients as progressive enhancement with a static border and visible focus.
 
+Surface and motion additions were researched 2026-09-23:
+
+- [Fluent light](https://github.com/microsoft/fluentui/blob/master/packages/tokens/src/alias/lightColor.ts) and [dark](https://github.com/microsoft/fluentui/blob/master/packages/tokens/src/alias/darkColor.ts) color tokens keep shadows black in both themes and roughly double their opacity in the dark theme.
+- [make-interfaces-feel-better](https://github.com/jakubkrehel/make-interfaces-feel-better), a community skill, replaces layered shadows with a faint white ring on dark surfaces and outlines images with an untinted black or white ring at 10%. Treat its values as examples.
+- [Emil Kowalski's skills](https://github.com/emilkowalski/skills), a community source, removes animation from very frequent keyboard actions, prefers ease-out for entering and leaving and ease-in-out for movement, and prefers transitions for rapidly retriggered states. [Vercel's Web Interface Guidelines](https://github.com/vercel-labs/web-interface-guidelines) also require motion that user input can interrupt; its preference for APCA contrast was not adopted because WCAG 2.2 governs.
+- The media backdrop and empty-slot guidance comes from a production review in which white panels behind absent images read as broken media in a dark theme. It is review reasoning, not a cited rule.
+
 ## Promotion decision
 
 Repeated visual coaching exposed a gap between general usability guidance and

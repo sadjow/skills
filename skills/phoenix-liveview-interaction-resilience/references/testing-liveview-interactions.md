@@ -7,6 +7,11 @@ Use context and LiveView tests to prove:
 - authorization and validation;
 - visible actionable errors;
 - duplicate and stale-attempt guards;
+- relative commands, such as move up, replayed with the payload their control
+  carried before the previous reply;
+- browser-only commands a control must carry, such as its focus request, read
+  by decoding its `phx-click` JSON, because the LiveView test client runs only
+  a chain's `push`, `patch`, and `navigate` commands;
 - recovery field whitelisting and step prerequisites;
 - outer transaction rollback without PubSub;
 - one durable result for one submission identity.
@@ -31,11 +36,18 @@ await page.evaluate(() => window.liveSocket.disableLatencySim());
 Use a `try`/`finally` helper so an ad hoc test cannot leak latency into later
 steps.
 
+Latency simulation only slows replies, so it cannot show a reply that beats
+frame-based client work, such as a focus retry. Act while the page is hidden,
+where Chrome pauses animation frames, then force a frame, for example by taking
+a screenshot through the DevTools protocol, and assert the final state.
+
 While the response is delayed, assert:
 
 - immediate local pressed, opening, selected, or pending state;
 - one `aria-busy` or documented pending owner;
 - related controls are single-flight;
+- a press on a control that received focus before the reply acts on the item it
+  was drawn for or is ignored;
 - stable geometry and preserved draft;
 - no duplicate event or durable mutation.
 

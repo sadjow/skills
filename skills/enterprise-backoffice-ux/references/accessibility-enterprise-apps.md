@@ -49,21 +49,30 @@ All interactive targets must be at least **24x24 CSS pixels**, or have sufficien
 Every drag operation must have a single-pointer alternative. Affects kanban boards, sortable lists, panel resizers, and file uploads.
 
 ```html
-<!-- Sortable list with drag AND button alternatives -->
-<ul role="listbox" aria-label="Task priority">
-  <li role="option" draggable="true" aria-grabbed="false">
+<!-- Sortable list: a pointer-only drag handle plus named move buttons -->
+<ol aria-label="Task priority">
+  <li>
+    <span class="drag-handle" aria-hidden="true"><!-- six-dot grip icon --></span>
     <span class="item-label">Review PR #42</span>
     <span class="reorder-controls">
-      <button aria-label="Move Review PR #42 up">Up</button>
-      <button aria-label="Move Review PR #42 down">Down</button>
+      <button type="button" aria-label="Move Review PR #42 up">Up</button>
+      <button type="button" aria-label="Move Review PR #42 down">Down</button>
     </span>
   </li>
-</ul>
+</ol>
 ```
 
-### 1.3 Focus Appearance -- SC 2.4.11 (Level AA)
+Keep a reorderable list as a native list. The `option` role makes its children
+presentational, so buttons inside a `listbox` option lose their button
+semantics, and `aria-grabbed` and `aria-dropeffect` are deprecated since
+ARIA 1.1. For focus after a move, announcements, touch dragging, and stale-order
+protection, use
+[Reorderable List UX](https://github.com/sadjow/skills/tree/main/skills/reorderable-list-ux)
+when installed.
 
-Focus indicators must have a minimum area of the focused element's perimeter times 2 CSS pixels, with at least 3:1 contrast against adjacent colors.
+### 1.3 Focus Appearance -- SC 2.4.13 (Level AAA)
+
+At Level AA, keyboard focus must be visible (SC 2.4.7), its indicator needs 3:1 contrast against adjacent colors (SC 1.4.11), and sticky headers, footers, and other author content must not hide the focused component entirely (SC 2.4.11 Focus Not Obscured (Minimum)). SC 2.4.13 adds, at Level AAA, an indicator at least as large as a 2 CSS pixel thick perimeter of the component with 3:1 contrast between its focused and unfocused pixels.
 
 ```css
 /* Enterprise-grade focus indicator */
@@ -323,70 +332,74 @@ File explorers, org charts, and navigation hierarchies in enterprise apps.
 
 Enterprise kanban boards, task prioritization, and layout customization.
 
-#### Keyboard-Driven Alternative Pattern
+#### Move Controls as the Baseline
+
+Give every card visible move controls that work by keyboard and by a single
+pointer. Dragging is a faster path on top of them, never the only one.
 
 ```html
-<!-- Kanban column with accessible drag and drop -->
-<div role="listbox"
-     aria-label="In Progress tasks"
-     aria-describedby="dnd-instructions">
-  <div role="option"
-       aria-selected="false"
-       tabindex="0"
-       aria-describedby="dnd-hint"
-       data-draggable="true">
+<!-- One board column; the handle serves pointer dragging only -->
+<h3 id="col-in-progress">In Progress</h3>
+<ol aria-labelledby="col-in-progress">
+  <li>
+    <span class="drag-handle" aria-hidden="true"><!-- six-dot grip icon --></span>
     <span class="task-title">Implement search feature</span>
     <div class="task-actions">
-      <button aria-label="Move Implement search feature to previous column">
-        <svg aria-hidden="true"><use href="#icon-arrow-left"/></svg>
-      </button>
-      <button aria-label="Move Implement search feature up">
+      <button type="button" aria-label="Move Implement search feature up">
         <svg aria-hidden="true"><use href="#icon-arrow-up"/></svg>
       </button>
-      <button aria-label="Move Implement search feature down">
+      <button type="button" aria-label="Move Implement search feature down">
         <svg aria-hidden="true"><use href="#icon-arrow-down"/></svg>
       </button>
-      <button aria-label="Move Implement search feature to next column">
-        <svg aria-hidden="true"><use href="#icon-arrow-right"/></svg>
+      <button type="button"
+              aria-haspopup="menu"
+              aria-expanded="false"
+              aria-label="Move Implement search feature to another column">
+        <svg aria-hidden="true"><use href="#icon-move"/></svg>
       </button>
     </div>
-  </div>
-</div>
+  </li>
+</ol>
 
-<div id="dnd-instructions" class="sr-only">
-  Press Enter to start dragging. Use Tab to navigate between drop targets.
-  Press Enter to drop or Escape to cancel.
-</div>
-<div id="dnd-hint" class="sr-only">Draggable item. Press Enter to drag.</div>
-
-<!-- Live region for drag announcements -->
-<div id="dnd-live" aria-live="assertive" aria-atomic="true" class="sr-only"></div>
+<!-- One status region for the whole board, in the page before the first move -->
+<div id="board-status" role="status" aria-atomic="true" class="sr-only"></div>
 ```
 
-#### Drag and Drop Announcements
+The column menu names each destination column. A keyboard drag mode may
+supplement these controls but never replaces them. It needs a focusable, named
+handle, Enter or Space to pick up and to drop, arrow keys to move, Escape to
+cancel, and an explanation the first time someone uses it.
+
+#### Move Announcements
+
+Name the item and where it landed in one polite message. Add the previous
+column and position when a move can jump, such as a drop or a move to another
+column; a one-step move implies its origin.
 
 ```javascript
-function announceDragStart(item, liveRegion) {
-  liveRegion.textContent =
-    `Started dragging ${item.label}. Use Tab to navigate to drop targets. ` +
-    `Press Enter to drop or Escape to cancel.`;
+function moveMessage({ label, column, position, total, previous }) {
+  const destination = `${column}, position ${position} of ${total}`;
+  return previous
+    ? `${label} moved from ${previous} to ${destination}.`
+    : `${label} moved to ${destination}.`;
 }
 
-function announceDragOver(item, target, liveRegion) {
-  liveRegion.textContent =
-    `${item.label} over ${target.label}. Press Enter to drop here.`;
-}
-
-function announceDropComplete(item, target, liveRegion) {
-  liveRegion.textContent =
-    `${item.label} dropped into ${target.label}.`;
-}
-
-function announceDragCancel(item, liveRegion) {
-  liveRegion.textContent =
-    `Dragging cancelled. ${item.label} returned to original position.`;
-}
+document.getElementById('board-status').textContent = moveMessage({
+  label: 'Implement search feature',
+  column: 'In Progress',
+  position: 1,
+  total: 4,
+  previous: 'To Do, position 3',
+});
 ```
+
+Keep focus on the moved card's control after each move. When a save fails,
+restore the saved order and show a visible error with `role="alert"` and a way
+to retry. A keyboard drag mode also announces the pickup, each position, the
+drop, and a cancel. For focus at the ends of a list, touch dragging, and
+stale-order protection, use
+[Reorderable List UX](https://github.com/sadjow/skills/tree/main/skills/reorderable-list-ux)
+when installed.
 
 ### 2.4 Resizable Split Panes
 
@@ -1783,7 +1796,7 @@ test.describe('Dashboard accessibility', () => {
 - [ ] Tree view expands/collapses with Right/Left arrows
 - [ ] Escape closes modals, dropdowns, popovers, and returns focus
 - [ ] Skip links work and target correct landmarks
-- [ ] All drag-and-drop operations have keyboard alternatives
+- [ ] Every drag-and-drop operation also works through visible buttons or a menu, and focus stays on the moved item
 
 #### Screen Reader (test with NVDA + Chrome, VoiceOver + Safari, JAWS + Chrome)
 
@@ -1795,6 +1808,7 @@ test.describe('Dashboard accessibility', () => {
 - [ ] Form labels are associated with inputs
 - [ ] Error messages are announced when they appear
 - [ ] Status updates are announced via live regions
+- [ ] Each move announces the item and its new position once
 - [ ] Loading states are announced (start and end)
 - [ ] Modal dialogs announce their title on open
 - [ ] Images/icons have appropriate alt text or are hidden from AT
@@ -1845,6 +1859,8 @@ test.describe('Dashboard accessibility', () => {
 - [APG Tree View Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/treeview/)
 - [APG Combobox Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/)
 - [APG Listbox Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/listbox/)
+- [WAI-ARIA 1.2: option role, children presentational](https://www.w3.org/TR/wai-aria-1.2/#option)
+- [WAI-ARIA 1.2: aria-grabbed, deprecated in ARIA 1.1](https://www.w3.org/TR/wai-aria-1.2/#aria-grabbed)
 - [APG Keyboard Interface Practices](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/)
 - [APG Data Grid Examples](https://www.w3.org/WAI/ARIA/apg/patterns/grid/examples/data-grids/)
 - [APG Sortable Table Example](https://www.w3.org/WAI/ARIA/apg/patterns/table/examples/sortable-table/)
