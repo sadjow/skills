@@ -58,6 +58,7 @@ into your agent's skill directory. Reload the agent if needed for discovery.
 - [explain-clearly](skills/explain-clearly/SKILL.md)
 - [github-team-delivery-review](skills/github-team-delivery-review/SKILL.md)
 - [github-media-attachments](skills/github-media-attachments/SKILL.md)
+- [ui-comparison-evidence](skills/ui-comparison-evidence/SKILL.md)
 
 ### Agent workflows and operations
 
@@ -83,6 +84,7 @@ task; installing every overlapping skill is optional.
 | Reactive UI testing | `playwright-reactive-ux-testing` | `playwright-responsive-ui-testing` for the bundled viewport and capture starter kit |
 | Responsive layout testing | `playwright-responsive-ui-testing` | `playwright-reactive-ux-testing` when a failure depends on event ordering or recovery |
 | Pull-request review | `review-pr-collaboratively` | `leave-code-review-comments-collaboratively` when turning findings into approved comments |
+| Before/after UI screenshots or scrolling video | `ui-comparison-evidence` | `github-media-attachments` for uploads; `flutter-text-scaling-accessibility` for Flutter scaling checks |
 | Agent harness maintenance | `improve-project-agent-harness` | `evolve-agent-harness` when retaining a lesson from concrete feedback |
 | Create or refine one skill | `skill-creator` | `agent-skill-content-research` for domain knowledge gaps |
 | Audit or upgrade a collection | `upgrade-agent-skills` | Fresh official research is part of every audit |
