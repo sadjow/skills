@@ -59,6 +59,7 @@ into your agent's skill directory. Reload the agent if needed for discovery.
 - [github-team-delivery-review](skills/github-team-delivery-review/SKILL.md)
 - [github-media-attachments](skills/github-media-attachments/SKILL.md)
 - [ui-comparison-evidence](skills/ui-comparison-evidence/SKILL.md)
+- [cold-ux-review](skills/cold-ux-review/SKILL.md)
 
 ### Agent workflows and operations
 
@@ -79,6 +80,7 @@ task; installing every overlapping skill is optional.
 | Task | Start with | Add when needed |
 | --- | --- | --- |
 | General web interface work | `web-ui-design` | `expressive-ui-design` for visual craft; `accessible-web-interactions` for interaction accessibility |
+| Context-free usability review with persona agents | `cold-ux-review` | `web-ui-design` for the heuristic pass; `accessible-web-interactions` for the accessibility guard |
 | Manual list ordering or drag and drop | `reorderable-list-ux` | `web-interaction-resilience` for save timing and conflicts; `phoenix-liveview-interaction-resilience` for LiveView patches and focus |
 | LiveView UI implementation | `phoenix-ui-architecture` | `phoenix-liveview-interaction-resilience` for timing, forms, uploads, recovery, and its reconnect helper |
 | Reactive UI testing | `playwright-reactive-ux-testing` | `playwright-responsive-ui-testing` for the bundled viewport and capture starter kit |

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Cold UX Review"
+  short_description: "Review screens as people with only a goal"
+  default_prompt: "Use $cold-ux-review to plan context-free reviews of these screens."
