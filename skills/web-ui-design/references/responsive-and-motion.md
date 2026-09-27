@@ -15,6 +15,17 @@ the longest supported labels and content, not only a convenient sample.
 - Provide mouse/keyboard alternatives for touch gestures and avoid hover-only
   actions.
 
+Keep at most one fixed bar on each viewport edge. When a contextual bar, such
+as a selection or checkout summary, needs the bottom edge, let it replace the
+persistent navigation there instead of stacking above it. Stacked sticky
+elements take their offsets from the actual responsive heights of the elements
+above them at every breakpoint; a single offset silently overlaps or leaves a
+gap wherever those heights change.
+
+When a label no longer fits, prefer a shorter visible label at that breakpoint
+or a more compact secondary surface over truncating the primary content.
+Removing truncation must still hold at the narrowest width with enlarged text.
+
 Container queries can adapt reusable components while media queries shape page
 composition. Choose them from ownership, not novelty.
 

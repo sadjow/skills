@@ -138,6 +138,10 @@ Prefer:
 4. a stable application-owned test ID for persistent shells and state
    boundaries.
 
+When a visible label changes by breakpoint, derive the expected accessible name
+from the running project's viewport instead of loosening the locator to match
+either label. A regex that accepts both hides a missing swap.
+
 Use Playwright's web-first assertions. Keep raw HTML and CSS snapshots out of
 behavior tests. For temporal state, explicit attributes such as `aria-busy`,
 `aria-expanded`, `inert`, and a documented `data-state` are useful contracts.

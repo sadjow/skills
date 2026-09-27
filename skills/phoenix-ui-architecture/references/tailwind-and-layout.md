@@ -29,6 +29,10 @@ and component tokens are useful only when ownership remains clear.
   before the row becomes ambiguous.
 - Reserve dimensions/aspect ratios for async media and state replacements to
   prevent layout shifts.
+- Sibling-spacing utilities such as `space-y-*` and `space-x-*` also give a
+  margin to `fixed` and `absolute` children, which moves their anchored edge.
+  Reset the margin of a positioned overlay inside such a stack, or render it
+  outside the stack.
 
 ## Motion and themes
 
@@ -36,6 +40,15 @@ Animate `opacity` and `transform` for routine feedback and profile exceptions
 before animating layout or expensive filters. Preserve a reduced-motion path
 and do not use `transition-all` as a substitute for identifying the changing
 property.
+
+In Tailwind v4, `translate-*`, `scale-*`, and `rotate-*` set the individual
+CSS `translate`, `scale`, and `rotate` properties rather than `transform`. A
+transition limited to `transform` does not animate them, and `transform: none`
+does not reset them, so `motion-reduce:transform-none` leaves the movement in
+place. Name the individual properties, or use `transition-transform`, which
+covers all four, and apply decorative movement only under `motion-safe:`.
+This and the spacing rule above are the project-neutral
+`cold-review-2026-09-26` review revision.
 
 Add theme variants only when the product requires them. Override semantic
 tokens rather than scattering theme-specific utility branches. Test contrast

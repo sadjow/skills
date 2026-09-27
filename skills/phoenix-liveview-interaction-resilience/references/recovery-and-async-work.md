@@ -35,6 +35,33 @@ and must not discard the draft on resume. Do not weaken the boundary by placing
 a bearer secret into the current analytics-enabled URL. Prove both the
 uninterrupted draft and the later protected destination in a browser test.
 
+A required full-document navigation must not cost the person their place
+either. Just before navigating, store a single-use, short-lived record without
+secrets for that destination: the scroll position, the anchor element in the
+viewport and its offset, and the focused control's stable wrapper ID. Consume
+it once on arrival, keep realigning the anchor through restore patches until
+the person scrolls, taps, or types, and return focus without scrolling. Prove
+the anchor offset and the focused control after the navigation at latency, on
+a phone and a desktop viewport. This is the project-neutral
+`cold-review-2026-09-26` review revision.
+
+A UI intent carried by the URL, such as a query flag that opens a review
+dialog, belongs to the document that will remain. When restore can still
+trigger a required full-document navigation, keep the intent in the
+destination URL and act on it only there; opening a dialog on a document about
+to be replaced loses the dialog and its focus. Consume the intent once on the
+final document so a reload does not repeat it, and enter the regression
+through the state that triggers the navigation, not only the settled one.
+
+Shell indicators derived from browser storage refresh from the `storage` event
+for other tabs, but that event never fires in the writing document. Route
+every write and removal through one helper that also dispatches a
+same-document event, and refresh on `pageshow` for back-forward cache
+restores. When the server judges stored records stale, remove only a record
+whose value still equals the one it judged, so a newer write from another tab
+survives. These decisions are the `device-cart-index-2026-09-27` review
+revision.
+
 Assign private root metadata, cache and referrer policy, and analytics
 exclusion before resolving a bearer capability or selecting an authentication
 redirect. Invalid, expired, and unauthenticated first responses need the same

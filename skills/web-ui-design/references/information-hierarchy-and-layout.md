@@ -27,6 +27,17 @@ reveal it when its condition occurs. Preserve persistent labels, accessible
 names and descriptions, status, explicit alternatives, and error recovery. A
 placeholder is not a label.
 
+Name each object once per view. A persistent header, hero, and card that all
+repeat the same identity spend the first viewport on one fact; let a compact
+header take over only after the fuller identity scrolls away. Show a
+descriptor, category, or type label only when it distinguishes this item from
+its neighbors, and derive it from one label source so different surfaces do
+not disagree. State a condition that applies to a whole list once above it
+instead of on every item. A status note beside an unavailable action explains
+why or when, not the action label again. These text-budget rules and the
+breakpoint and sticky rules in the responsive reference form the
+project-neutral `cold-review-2026-09-26` revision.
+
 Required provider, license, or legal attribution is context, not task status.
 Keep it visible and perceivable at the prominence its obligation requires, but
 place it outside success, error, loading, and confirmation messages unless the

@@ -87,6 +87,13 @@ roles when the combined view exposes unauthorized data or produces competing
 primary actions. A person with multiple roles must be able to understand which
 scope and authority are active.
 
+When one account can stand on both sides of the same exchange, such as a
+business owner who also buys from suppliers, name each entry from the actor's
+side rather than by the shared object. "Purchases" and "Received" stay
+unambiguous; a bare "Orders" reads as whichever side the person manages most.
+Keep an unfinished draft, such as a cart, out of the completed-exchange entry
+and give it its own return route.
+
 When the shared core is itself being inspected or previewed, keep contextual
 chrome outside the measured content and layout being evaluated. If an overlay,
 banner, or editing affordance changes wrapping, viewport behavior, semantics,

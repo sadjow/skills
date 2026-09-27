@@ -7,6 +7,12 @@ landmarks. Label repeated navigation or regions distinctly. Use a real button
 for an action, a link for navigation, native form controls for input, and a
 table for tabular relationships.
 
+When a control shows a shorter label at narrow widths, render the short and
+long labels as breakpoint-swapped visible text so the accessible name always
+contains what is on screen. A hidden longer `aria-label` behind a short visible
+label breaks voice control and Label in Name (WCAG 2.5.3). Icon-only controls
+still need an accessible name.
+
 ARIA changes accessibility semantics, not browser behavior. If a custom widget
 is necessary, implement its complete keyboard, focus, state, and naming model
 from an established pattern.

@@ -19,6 +19,11 @@ use `overflow: clip` when the intent is paint clipping only, or keep the action
 in normal flow. Verify both mid-scroll and the end of the container because the
 failure can differ at each point.
 
+Removing truncation from primary content lets it grow: repeat the narrowest
+width with 200% text before accepting the change. When the row then overflows,
+compact a secondary surface, such as a chip that can drop a total another
+region already shows, rather than restoring truncation of the primary text.
+
 At large text, allow action rows and labels to wrap and assert that every
 visible action remains inside its action region and above other persistent
 navigation. A zero document `scrollWidth` delta is insufficient evidence:

@@ -31,6 +31,14 @@ One worker is the safe default when tests share application-global state or a
 single database. Serial execution is not a substitute for isolated test data,
 but it prevents hidden concurrency until ownership is explicit.
 
+A database recreated once per run is still shared by every selected project
+and repeated run in that invocation. Derive each value the application treats
+as globally unique, such as an email, a verified phone, a username, or a slug,
+from the project and run rather than a fixed literal. A fixed literal passes
+alone and then fails in the next project as a conflict or an account merge,
+which hides the behavior under test. This is the project-neutral
+`cold-review-2026-09-26` review revision.
+
 For true parallelism, use one of two complete topologies:
 
 1. Give each shard its own application process, port, database, and artifacts.
