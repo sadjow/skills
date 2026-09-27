@@ -36,6 +36,10 @@ pressed, focus, disabled/unavailable, pending, success, and error behavior as
 the task requires. Do not make disabled state the only explanation; provide the
 reason when it is not obvious.
 
+Current, selected, pressed, and checked states appear in the first paint and
+switch in one frame. Fading between two choices shows both as active for a
+moment, which reads as the interface catching up late.
+
 Pending feedback appears locally and preserves the control's meaning and size.
 Use skeletons only when their geometry resembles the final content and the
 loading duration warrants them.
@@ -50,6 +54,11 @@ need justify it.
 Keep durations proportional to distance and consequence. Entry often uses an
 ease-out and exit a slightly faster ease-in, but measure within the product.
 Avoid mandatory bounce, parallax, autoplay, or decorative movement.
+
+Animate an entrance once, for content the person just caused; content that was
+already visible must not enter again after hydration, reconnect, or a return
+navigation. Fade an overlay through one opacity layer and keep
+`backdrop-filter` off scrims and sticky bars, where it repaints on every frame.
 
 Under reduced motion, remove large spatial movement and pulsing while retaining
 immediate visibility, focus, status, and lifecycle completion.

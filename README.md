@@ -45,6 +45,7 @@ into your agent's skill directory. Reload the agent if needed for discovery.
 - [clojure-development](skills/clojure-development/SKILL.md)
 - [phoenix-ui-architecture](skills/phoenix-ui-architecture/SKILL.md)
 - [phoenix-liveview-interaction-resilience](skills/phoenix-liveview-interaction-resilience/SKILL.md)
+- [phoenix-liveview-perceived-performance](skills/phoenix-liveview-perceived-performance/SKILL.md)
 - [playwright-reactive-ux-testing](skills/playwright-reactive-ux-testing/SKILL.md)
 - [playwright-responsive-ui-testing](skills/playwright-responsive-ui-testing/SKILL.md)
 - [diagnose-web-performance](skills/diagnose-web-performance/SKILL.md)
@@ -83,6 +84,8 @@ task; installing every overlapping skill is optional.
 | Context-free usability review with persona agents | `cold-ux-review` | `web-ui-design` for the heuristic pass; `accessible-web-interactions` for the accessibility guard |
 | Manual list ordering or drag and drop | `reorderable-list-ux` | `web-interaction-resilience` for save timing and conflicts; `phoenix-liveview-interaction-resilience` for LiveView patches and focus |
 | LiveView UI implementation | `phoenix-ui-architecture` | `phoenix-liveview-interaction-resilience` for timing, forms, uploads, recovery, and its reconnect helper |
+| LiveView flicker, late state, stutter, or slow mount | `phoenix-liveview-perceived-performance` | `diagnose-web-performance` for framework-neutral measurement; `phoenix-liveview-interaction-resilience` when input is lost or duplicated |
+| Slow or unsteady web journey in any stack | `diagnose-web-performance` | `playwright-reactive-ux-testing` for temporal regressions; a framework specialist once the layer is known |
 | Reactive UI testing | `playwright-reactive-ux-testing` | `playwright-responsive-ui-testing` for the bundled viewport and capture starter kit |
 | Responsive layout testing | `playwright-responsive-ui-testing` | `playwright-reactive-ux-testing` when a failure depends on event ordering or recovery |
 | Pull-request review | `review-pr-collaboratively` | `leave-code-review-comments-collaboratively` when turning findings into approved comments |

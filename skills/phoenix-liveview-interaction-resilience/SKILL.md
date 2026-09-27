@@ -23,6 +23,11 @@ and transient feedback in the browser. Give each visible attribute one owner.
 Read [interaction architecture](references/interaction-architecture.md) before
 changing hooks, event handlers, overlays, selection cards, tabs, or forms.
 
+When the fault is flicker, state that activates late, a fade between two
+choices, a replayed entrance, stutter, or slow mount rather than lost or
+duplicated input, use `$phoenix-liveview-perceived-performance` when
+available.
+
 Choose loading classes or `Phoenix.LiveView.JS` for simple patch-aware feedback;
 use a focused hook only when the lifecycle needs browser APIs or ownership
 across frames. Read [LiveView mechanisms](references/liveview-interaction-patterns.md)

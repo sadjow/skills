@@ -1,0 +1,4 @@
+interface:
+  display_name: "Phoenix LiveView Perceived Performance"
+  short_description: "Remove flicker, late state, and stutter in LiveView"
+  default_prompt: "Use $phoenix-liveview-perceived-performance to find the layer behind this LiveView flicker or slowness and fix it with a guard."

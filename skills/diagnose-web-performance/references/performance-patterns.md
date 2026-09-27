@@ -7,6 +7,7 @@
 - [Server and external work](#server-and-external-work)
 - [Assets and media](#assets-and-media)
 - [Rendering and main thread](#rendering-and-main-thread)
+- [State indication and paint cost](#state-indication-and-paint-cost)
 - [Real-time and reconnect](#real-time-and-reconnect)
 - [Caching, prefetching, and preloading](#caching-prefetching-and-preloading)
 - [Architecture changes](#architecture-changes)
@@ -98,6 +99,46 @@ Prefer stable shells and transform/opacity motion. Virtualize only measured
 large-list bottlenecks; virtualization adds focus, accessibility, and scroll
 complexity.
 
+## State indication and paint cost
+
+Symptom: the page looks right in a final screenshot, but a tab lights up late,
+a selection fades between two choices, content animates in again after
+navigation, or an overlay stutters while it opens.
+
+Probe:
+
+- compare the server-rendered HTML with the first painted frame and the
+  settled frame;
+- look for visible state set by client code after load, such as a class
+  binding or an attribute computed from the URL;
+- list the transitions on elements that carry current, selected, pressed, or
+  checked styles, including shorthand utilities that include color;
+- check whether entrance motion runs again on hydration, reconnect, or a
+  return navigation;
+- look for nested fading layers, `backdrop-filter`, large blur filters, and
+  view transitions on the affected surface.
+
+Remedy:
+
+- render the real state in the first HTML and style it through static
+  attribute selectors; client code may keep the attribute in sync but never
+  sets it first;
+- give each client-owned attribute one owner and protect it from later
+  server updates;
+- switch state styles in one frame and keep press feedback on transforms;
+- run an entrance once, for content the person just caused, and never on
+  content already painted;
+- fade an overlay through a single opacity layer and move its panel with a
+  transform;
+- replace `backdrop-filter` on scrims and sticky bars with an opaque or plain
+  translucent surface;
+- keep a view transition only when it explains a spatial change and a
+  real-GPU measurement shows an acceptable first frame.
+
+Late state from client code, fades on selection, nested opacity, and backdrop
+filters reproduce in any server-rendered, hydrated framework. They are not
+evidence for changing frameworks.
+
 ## Real-time and reconnect
 
 Measure duplicate subscriptions, redundant broadcasts, retry storms, stale
@@ -132,3 +173,5 @@ Before adding a second frontend or rewriting:
 6. document evidence, consequences, and revisit criteria.
 
 Do not infer the root cause of a poor-network session from the framework name.
+Do not count a state-ownership or paint defect as evidence against a framework
+until it has been fixed at its layer and measured again.

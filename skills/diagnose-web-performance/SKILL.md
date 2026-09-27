@@ -1,12 +1,16 @@
 ---
 name: diagnose-web-performance
-description: Measure and diagnose web performance bottlenecks before choosing optimizations. Use for slow interactions, loading or rendering delays, and performance-motivated architecture changes.
+description: Measure and diagnose web performance bottlenecks before choosing optimizations. Use for slow interactions, loading or rendering delays, flicker, late state, stutter, and performance-motivated architecture changes.
 ---
 
 # Diagnose Web Performance
 
 Find the slow boundary before prescribing an optimization. Separate immediate
 interaction feedback from network, server, asset, rendering, and device costs.
+
+Treat small visual faults as performance defects: a state that appears after
+the page, a color that fades between two choices, a replayed entrance, or a
+stuttering overlay makes a product feel slow even when load metrics pass.
 
 ## Choose the authorized mode
 
@@ -52,8 +56,10 @@ Classify the dominant boundary:
 3. server queueing, database, external service, or serialization;
 4. HTML, JavaScript, CSS, font, or media transfer;
 5. main-thread work, hydration, DOM patching, layout, paint, or memory;
-6. retry, reconnect, or duplicated work;
-7. measurement artifact or environment drift.
+6. visible state first set by client code after the server-rendered paint;
+7. retry, reconnect, or duplicated work;
+8. measurement artifact or environment drift, including software-rendered
+   headless raster.
 
 Read
 [`references/performance-patterns.md`](references/performance-patterns.md) for
@@ -91,6 +97,12 @@ Replay the same journey and compare:
 
 Use `$playwright-responsive-ui-testing` for temporal browser evidence and
 `$web-interaction-resilience` when the measured gap is interaction feedback.
+For a Phoenix LiveView application, `$phoenix-liveview-perceived-performance`
+carries the framework-specific causes, guards, and measurement helpers.
+
+Guard the fix with the cheapest deterministic check, such as a render test for
+server-rendered state, a template scan for forbidden transitions, or a
+query-count assertion, before relying on a browser test.
 
 ## Report clearly
 

@@ -6,6 +6,7 @@
 - [Field and lab evidence](#field-and-lab-evidence)
 - [Core Web Vitals](#core-web-vitals)
 - [Journey marks](#journey-marks)
+- [Frame-level evidence](#frame-level-evidence)
 - [Controlled comparisons](#controlled-comparisons)
 - [Evidence hierarchy](#evidence-hierarchy)
 
@@ -73,6 +74,32 @@ Record marks such as:
 Use the same mark definitions before and after a change. Never move a mark to
 make a comparison look better.
 
+## Frame-level evidence
+
+Flicker, late state, and stutter live inside individual frames. A final
+assertion can pass after a visible flash.
+
+- Observe `long-animation-frame` entries registered before the interaction to
+  separate script from style, layout, and rendering time.
+- Record `requestAnimationFrame` deltas through the interaction to see every
+  frame and its longest interval.
+- Split a long frame with a browser performance trace into script, style and
+  layout, paint, and raster.
+- Capture a video or frame sequence when the claim is about what the person
+  sees between the first and settled paint.
+
+Headless browsers often rasterize in software. Its raster time can be many
+times larger than a real device's and varies with machine load, so use it for
+before-and-after comparison on one machine only. Attribute a long frame to a
+paint cause after it reproduces with a hardware GPU, and confirm the renderer
+from the WebGL unmasked renderer string. Emulate the target width and device
+pixel ratio, since raster cost follows pixel count.
+
+Isolate a suspected cause by injecting a style or script at document start.
+Request interception that rewrites responses delays the document and changes
+the timing under test. Confirm the suspect was active in the baseline before
+attributing the difference to it.
+
 ## Controlled comparisons
 
 Hold stable where practical:
@@ -83,6 +110,7 @@ Hold stable where practical:
 - browser version and engine;
 - viewport and input mode;
 - device or CPU throttle;
+- renderer, hardware GPU or software, and device pixel ratio;
 - latency, bandwidth, and packet loss;
 - cold or warm cache;
 - build mode and observability overhead.

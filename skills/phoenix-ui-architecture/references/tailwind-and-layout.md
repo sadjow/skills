@@ -50,6 +50,13 @@ covers all four, and apply decorative movement only under `motion-safe:`.
 This and the spacing rule above are the project-neutral
 `cold-review-2026-09-26` review revision.
 
+Plain `transition` in Tailwind v4 also animates colors, opacity, shadow, and
+filters. Do not put it, `transition-colors`, or `transition-opacity` on a class
+string that styles a current, selected, pressed, or checked state; that state
+switches in one frame, and press feedback stays on `transition-transform`.
+Style server-rendered state through static attribute variants rather than
+client class bindings.
+
 Add theme variants only when the product requires them. Override semantic
 tokens rather than scattering theme-specific utility branches. Test contrast
 and system controls such as `color-scheme` for the modes actually supported.
