@@ -33,6 +33,27 @@ At the relevant idle, expanded, pending, error, and completed states, check:
 - keyboard order, focus visibility and return, and equivalent touch actions;
 - reduced-motion behavior when the journey uses animation.
 
+Media queries in `rem` resolve against the browser's initial font size, so
+enlarging the root element's font leaves them unchanged. A zoomed narrow
+viewport therefore does not prove large text at a wide width; where a labelled
+row could overflow, also enlarge the root font in the page at the widths it
+spans. Derive width and alignment expectations from the layout's shared
+measures or an aligned landmark, not from an earlier layout's literal. When an
+assertion depends on wrapping, fix the text that wraps, because generated
+unique suffixes change its length between runs.
+
+Under mobile emulation, content wider than the viewport widens the layout
+viewport, and fixed or full-width chrome stretches with it. The chrome then
+looks like the widest element; find the content that first exceeds the
+viewport before changing it.
+
+A desktop browser at a phone width keeps a classic scrollbar, so its content
+is narrower than an emulated phone at the same viewport width. A row that fits
+the emulated phone can clip there, which is also a narrower real phone. Assert
+fit from element geometry rather than viewport width, and prefer container
+queries for a row whose contents compact, since the scrollbar or a side column
+changes the row without changing the viewport.
+
 Use semantic locators, web-first assertions, trial actions, or hit testing.
 Presence in the DOM or viewport intersection alone does not prove actionability.
 Do not hide failures behind arbitrary sleeps or increased timeouts.
@@ -60,6 +81,10 @@ The [Playwright starter kit](assets/playwright-kit) provides optional projects,
 geometry assertions, delay helpers, capture support, and an example journey.
 Copy only what is needed. Preserve the project's package manager, module
 conventions, authentication, reporters, web server, and CI policy.
+
+Before attributing a failure from a broad selection to the change, rerun it on
+the change's base commit. Report one that also fails there as pre-existing
+rather than fixing or skipping it inside the change.
 
 Report the tested journey, viewports, input modes, layout and focus outcomes,
 and relevant artifacts. Distinguish emulation from physical-device evidence;
