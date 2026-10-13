@@ -8,7 +8,7 @@
     "check": "npm run typecheck && npm run check:content && npm run test:validation && npm run check:scripts",
     "check:content": "node scripts/check-repository.mjs",
     "typecheck": "tsc --noEmit",
-    "test:validation": "node --test scripts/check-repository.test.mjs",
+    "test:validation": "node --test scripts/check-repository.test.mjs skills/*/scripts/*.test.mjs",
     "check:scripts": "python3 scripts/check-scripts.py"
   },
   "devDependencies": {

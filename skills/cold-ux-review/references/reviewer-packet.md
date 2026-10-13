@@ -31,6 +31,10 @@ design documents, or roadmap. Judge only what the running product shows.
 - Local or disposable environment: authenticated and mutating journeys are
   allowed through the named fixtures. Never paste session tokens, contact
   data, or exact coordinates into findings.
+- Print or save a URL only through the redaction helper the coordinator names.
+  That covers the current page URL, link targets, redirects, request and
+  response URLs, and error messages. Before returning, run the helper's scan
+  over your evidence text files and fix every file it names.
 - Use your own headless browser from your own script, never a shared
   interactive browser. Do not start, stop, or reset servers or databases.
 
@@ -55,6 +59,22 @@ await browser.close();
 Wait for the application's ready signal before interacting. Find controls by
 role and label, as a person would.
 
+Redact with the skill's tested helper, passing any route-specific secrets the
+coordinator names:
+
+```js
+const { safeUrl, redactText } = await import("<skill directory>/scripts/safe-url.mjs");
+const redaction = { secretParams: ["<parameter>"], secretPaths: [/(\/<route>\/)[^/]+/] };
+
+console.log(safeUrl(page.url(), redaction));
+```
+
+The scan prints only file names and counts, never the values:
+
+```sh
+node <skill directory>/scripts/safe-url.mjs <evidence text files>
+```
+
 ## Method
 
 Persona lanes record the five-second test and first-click predictions before
@@ -63,8 +83,11 @@ measure at the narrowest supported width, a phone, a tablet, and a desktop.
 
 ## Output
 
-Return Markdown in this shape, quoting visible interface text in its original
-language:
+Return the report as your final message, as Markdown in this shape, quoting
+visible interface text in its original language. When the coordinator names a
+messaging channel, also send a long report there in numbered parts and end the
+last part with `END OF REPORT`, because relayed final messages can be
+truncated.
 
 ```md
 ## Summary

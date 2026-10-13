@@ -29,7 +29,10 @@ who owns the work. Keep each reviewer bounded and independent.
    names, labels, instructions, or state.
 4. Choose an environment for every state, following the rules below.
 5. Fill a [reviewer packet](references/reviewer-packet.md) for each lane and
-   launch independent reviewers in parallel.
+   launch independent reviewers in parallel. Relayed final messages can arrive
+   truncated, so when a messaging channel exists, ask for long reports in
+   numbered parts that end with an explicit closing marker, and confirm the
+   marker arrived before consolidating.
 
 ## Environment rules
 
@@ -48,6 +51,13 @@ who owns the work. Keep each reviewer bounded and independent.
   shared interactive browser. Screenshots and traces are private diagnostics
   kept outside the repository. Findings quote visible interface text, never
   session tokens, contact data, or exact coordinates.
+- Redact before any output or saved evidence; redacting afterward has already
+  exposed the value. Give every reviewer the same tested helper,
+  [`scripts/safe-url.mjs`](scripts/safe-url.mjs), never a hand-written rule
+  per agent: redirects nest secrets inside parameters such as `return_to`, and
+  the helper recurses into them. Name the project's short route-specific
+  secrets through its options, and keep bearer values out of URLs entirely
+  when signing personas in, because tools print request URLs in error logs.
 
 ## Review method
 
@@ -84,7 +94,10 @@ explanation, intro cards, and repeated identity as candidates for removal.
 1. Merge duplicates and count how many independent reviewers reported each
    issue. Agreement raises confidence, not severity.
 2. Reproduce every finding in the running interface before acting. Drop stale,
-   invented, or environment-caused claims.
+   invented, or environment-caused claims. Before recording a regression of an
+   earlier fix, read that fix's regression test or acceptance record:
+   reviewers can read a designed state, such as a deliberate partial glimpse,
+   as breakage.
 3. Reject recommendations that break accessibility, privacy, security, or
    domain rules, and keep what reviewers said works. Before adding a label,
    tooltip, or explanation a reviewer asks for, check whether the element is
