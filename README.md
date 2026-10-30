@@ -56,7 +56,7 @@ into your agent's skill directory. Reload the agent if needed for discovery.
 - [review-pr-collaboratively](skills/review-pr-collaboratively/SKILL.md)
 - [leave-code-review-comments-collaboratively](skills/leave-code-review-comments-collaboratively/SKILL.md)
 - [external-code-review-prompt](skills/external-code-review-prompt/SKILL.md)
-- [explain-clearly](skills/explain-clearly/SKILL.md)
+- [explain-and-present](skills/explain-and-present/SKILL.md)
 - [github-team-delivery-review](skills/github-team-delivery-review/SKILL.md)
 - [github-media-attachments](skills/github-media-attachments/SKILL.md)
 - [ui-comparison-evidence](skills/ui-comparison-evidence/SKILL.md)

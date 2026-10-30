@@ -14,5 +14,6 @@
   "test-responsive-ui": "playwright-responsive-ui-testing",
   "ui-ux-design": "web-ui-design",
   "phoenix-liveview-resilient-ux": "phoenix-liveview-interaction-resilience",
-  "build-resilient-liveview": "phoenix-liveview-interaction-resilience"
+  "build-resilient-liveview": "phoenix-liveview-interaction-resilience",
+  "explain-clearly": "explain-and-present"
 }

@@ -9,7 +9,7 @@ Review the change deeply, update conclusions when product context changes, and k
 
 ## Required companion skill
 
-Before taking any review action, load and read `$explain-clearly` completely from the available skills catalog. Announce that both skills are being used. Apply `$explain-clearly` throughout the entire review, not only when presenting the final findings.
+Before taking any review action, load and read `$explain-and-present` completely from the available skills catalog. Announce that both skills are being used. Apply `$explain-and-present` throughout the entire review, not only when presenting the final findings.
 
 Use it to:
 
@@ -20,7 +20,7 @@ Use it to:
 - write comments that another reviewer can understand without the surrounding chat;
 - prepare concise review summaries and team handoffs.
 
-Follow its sequence as appropriate: `Goal → Big idea → Parts → Example → Their turn → Fix confusion → Summary`. If `$explain-clearly` is unavailable, say so briefly and apply this sequence manually.
+Follow its workflow as appropriate: fix the audience, goal, and message; lead with what matters to the reader; introduce new ideas in small pieces, concrete before general; remove presentation cost; and check understanding. If `$explain-and-present` is unavailable, say so briefly and apply this workflow manually.
 
 ## Non-negotiable safeguards
 
@@ -75,7 +75,7 @@ Never describe an approved comment as posted. If a posting command is interrupte
 
 ### 4. Explain every finding before drafting
 
-Use `$explain-clearly` for every candidate finding in this order:
+Use `$explain-and-present` for every candidate finding in this order:
 
 1. desired outcome;
 2. concrete sequence or example;
