@@ -11,8 +11,8 @@ for executable helpers, and `assets/` for copyable project resources. Agent
 metadata is optional. Avoid a new sibling skill when an existing one owns the
 same behavior.
 
-Name the capability, adding a domain or tool when it prevents ambiguity. Keep
-the folder and frontmatter name aligned. Descriptions should state the job and
+Choose names with `name-agent-skills`, and keep the folder and frontmatter
+name aligned. Descriptions should state the job and
 its selection boundary without an exhaustive feature list. Keep topic groups
 in the README so catalog changes do not alter installation paths.
 

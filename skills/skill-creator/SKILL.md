@@ -40,11 +40,12 @@ universal rule.
 
 ## Name and describe the job
 
-Use a stable capability name, qualified by domain or tool when it prevents a
-likely collision. Use lowercase letters, digits, and single hyphens, with the
-same name in the folder and frontmatter and at most 64 characters. Prefer clear
-intent over a persona such as expert or helper. Do not include model versions
-or hypothetical future categories.
+Choose the name with `$name-agent-skills` when it is available. Otherwise use
+a name that reveals what the skill does and tells it apart from its neighbors,
+qualified by domain or tool when that prevents a collision. Use lowercase
+letters, digits, and single hyphens, with the same name in the folder and
+frontmatter and at most 64 characters. When no clear name fits, refine the
+skill's scope before naming it.
 
 Keep the description short enough to remain useful in a large catalog. State
 what the skill does and the concrete context in which it applies. Add a

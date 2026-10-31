@@ -31,7 +31,7 @@ Keep private skill names, operational content, examples, and migration records i
 
 For each affected skill, identify its user intent, output, nearest alternative, non-obvious invariants, and required resources. Classify it as keep, clarify, rename, consolidate, or refresh from upstream.
 
-Choose a stable name that identifies the capability, adding a domain or tool when it disambiguates. Keep folder and frontmatter names aligned. Avoid model versions, vague personas, and speculative category paths. Preserve accurate broad names when the capability is actually broad. Short descriptions should expose the real selection boundary rather than list every subtask.
+Judge each name with `$name-agent-skills` when it is available. Otherwise choose a stable name that reveals the capability and tells it apart from its neighbors, adding a domain or tool when it disambiguates, with folder and frontmatter names aligned. Short descriptions should expose the real selection boundary rather than list every subtask.
 
 Resolve overlapping ownership before inventing new names. Consolidation must retain unique constraints, resources, and operational examples in one independently installable skill. Distinct skills need distinct selection criteria; a cosmetic rename cannot establish that distinction.
 

@@ -71,6 +71,7 @@ into your agent's skill directory. Reload the agent if needed for discovery.
 - [improve-project-agent-harness](skills/improve-project-agent-harness/SKILL.md)
 - [agent-skill-content-research](skills/agent-skill-content-research/SKILL.md)
 - [skill-creator](skills/skill-creator/SKILL.md)
+- [name-agent-skills](skills/name-agent-skills/SKILL.md)
 - [upgrade-agent-skills](skills/upgrade-agent-skills/SKILL.md)
 - [browser-harness](skills/browser-harness/SKILL.md)
 - [tmux-project-services](skills/tmux-project-services/SKILL.md)
@@ -97,6 +98,7 @@ task; installing every overlapping skill is optional.
 | Status update or notification for a team channel or tracker | `draft-and-post-team-updates` | `explain-and-present` for the update's structure |
 | Before/after UI screenshots or scrolling video | `ui-comparison-evidence` | `github-media-attachments` for uploads; `flutter-text-scaling-accessibility` for Flutter scaling checks |
 | Agent harness maintenance | `improve-project-agent-harness` | `evolve-agent-harness` when retaining a lesson from concrete feedback |
+| Name, rename, or split a skill | `name-agent-skills` | `skill-creator` for the rest of the skill; `upgrade-agent-skills` for a collection audit or migration |
 | Create or refine one skill | `skill-creator` | `agent-skill-content-research` for domain knowledge gaps |
 | Audit or upgrade a collection | `upgrade-agent-skills` | Fresh official research is part of every audit |
 

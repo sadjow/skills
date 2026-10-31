@@ -1,0 +1,4 @@
+interface:
+  display_name: "Name Agent Skills"
+  short_description: "Choose skill names that reveal intent and stand apart"
+  default_prompt: "Use $name-agent-skills to check whether this skill's name says what it does and suggest a better one if it does not."
