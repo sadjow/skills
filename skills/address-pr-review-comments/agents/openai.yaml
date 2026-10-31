@@ -1,0 +1,4 @@
+interface:
+  display_name: "Address PR Review Comments"
+  short_description: "Verify, fix, and answer review comments on a pull request"
+  default_prompt: "Use $address-pr-review-comments to check the review comments on my pull request and show me which ones are valid."

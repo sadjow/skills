@@ -1,0 +1,4 @@
+interface:
+  display_name: "Draft and Post Team Updates"
+  short_description: "Draft and post team updates in chat or trackers"
+  default_prompt: "Use $draft-and-post-team-updates to draft a short update for my team about this work and show it to me before posting."

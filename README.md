@@ -59,6 +59,9 @@ into your agent's skill directory. Reload the agent if needed for discovery.
 - [explain-and-present](skills/explain-and-present/SKILL.md)
 - [github-team-delivery-review](skills/github-team-delivery-review/SKILL.md)
 - [github-media-attachments](skills/github-media-attachments/SKILL.md)
+- [commit-push-and-open-pr](skills/commit-push-and-open-pr/SKILL.md)
+- [address-pr-review-comments](skills/address-pr-review-comments/SKILL.md)
+- [draft-and-post-team-updates](skills/draft-and-post-team-updates/SKILL.md)
 - [ui-comparison-evidence](skills/ui-comparison-evidence/SKILL.md)
 - [cold-ux-review](skills/cold-ux-review/SKILL.md)
 
@@ -89,6 +92,9 @@ task; installing every overlapping skill is optional.
 | Reactive UI testing | `playwright-reactive-ux-testing` | `playwright-responsive-ui-testing` for the bundled viewport and capture starter kit |
 | Responsive layout testing | `playwright-responsive-ui-testing` | `playwright-reactive-ux-testing` when a failure depends on event ordering or recovery |
 | Pull-request review | `review-pr-collaboratively` | `leave-code-review-comments-collaboratively` when turning findings into approved comments |
+| Commit, push, and open a pull request | `commit-push-and-open-pr` | `github-media-attachments` for screenshots or video in the description |
+| Review feedback on your own pull request | `address-pr-review-comments` | `commit-push-and-open-pr` to push the fixes; `draft-and-post-team-updates` to tell reviewers |
+| Status update or notification for a team channel or tracker | `draft-and-post-team-updates` | `explain-and-present` for the update's structure |
 | Before/after UI screenshots or scrolling video | `ui-comparison-evidence` | `github-media-attachments` for uploads; `flutter-text-scaling-accessibility` for Flutter scaling checks |
 | Agent harness maintenance | `improve-project-agent-harness` | `evolve-agent-harness` when retaining a lesson from concrete feedback |
 | Create or refine one skill | `skill-creator` | `agent-skill-content-research` for domain knowledge gaps |
