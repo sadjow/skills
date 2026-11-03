@@ -48,9 +48,12 @@ read [references/evidence.md](references/evidence.md).
   drafting anything else. If you cannot, finish the thinking first; structure
   will not hide an unclear point.
 - **Accuracy.** Simplify how you say it, not what is true. Add no confidence,
-  cause, or detail the evidence does not support, and label estimates and
-  assumptions as such. Examples and code they may copy must be correct for
-  every case they claim to handle and agree with the surrounding text.
+  cause, or detail the evidence does not support. Label estimates, inferences,
+  and assumptions in the deliverable itself, because a caveat told only to the
+  person who asked for it never reaches the audience, and keep the qualifier
+  when you shorten a claim: "the 2019 diagram shows port 3" must not become
+  "port 3". Examples and code they may copy must be correct for every case they
+  claim to handle and agree with the surrounding text.
 - **Medium.** A reader sets the pace and can reread. A listener cannot, because
   speech disappears. Slides with speech split attention between two sources.
   Section 5 adapts the plan to each.
@@ -105,7 +108,8 @@ an incident report, a status update, or a talk, read
 ## 4. Remove presentation cost
 
 - **Cut what does not serve the goal**: interesting asides, history, tangents,
-  stacked hedges, and decorative images. An anecdote that illustrates the actual
+  stacked hedges (keep the one qualifier or source that Accuracy requires),
+  and decorative images. An anecdote that illustrates the actual
   point is not an aside.
 - **Keep together what must be read together.** Label the diagram itself instead
   of using a legend, put the explanation beside the code or number it explains,
@@ -174,10 +178,10 @@ learn less from.
 - **Written or delayed**: reread the draft as someone arriving cold. Confirm
   that the first lines alone say what this is and what is needed; that every
   term, acronym, internal name, and skipped step is known to this audience or
-  explained; that every claim is one you can support; and that every list,
-  heading, and visual earns its place. When the
-  stakes justify it, ask someone without context to read it and say what they
-  would do next.
+  explained; that every claim is one you can support, stated no more firmly
+  than its evidence; and that every list, heading, and visual earns its place.
+  When the stakes justify it, ask someone without context to read it and say
+  what they would do next.
 - **When a check fails**, explain differently: a new example, another
   representation, or a smaller step. Repeating the same explanation longer or
   louder does not help.
@@ -194,4 +198,5 @@ learn less from.
   remember 10% of what they read", "93% of communication is nonverbal", or a
   ten-minute attention span. None holds up.
 - Applying any rule here everywhere. Each has conditions; when rules conflict,
-  the audience's knowledge and the goal decide.
+  the audience's knowledge and the goal decide how to say it, never what is
+  true or how sure it is.
