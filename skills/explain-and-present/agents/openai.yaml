@@ -2,3 +2,5 @@ interface:
   display_name: "Explain and Present"
   short_description: "Explain so people understand with less effort"
   default_prompt: "Use $explain-and-present to explain this to its audience at the right depth and check understanding when useful."
+policy:
+  allow_implicit_invocation: false
