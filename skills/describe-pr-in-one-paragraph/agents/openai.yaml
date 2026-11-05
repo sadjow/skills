@@ -1,0 +1,6 @@
+interface:
+  display_name: "Describe a PR in One Paragraph"
+  short_description: "Write a pull request description as one short paragraph"
+  default_prompt: "Use $describe-pr-in-one-paragraph to rewrite this pull request's description as one short paragraph."
+policy:
+  allow_implicit_invocation: false

@@ -60,6 +60,7 @@ into your agent's skill directory. Reload the agent if needed for discovery.
 - [github-team-delivery-review](skills/github-team-delivery-review/SKILL.md)
 - [github-media-attachments](skills/github-media-attachments/SKILL.md)
 - [commit-push-and-open-pr](skills/commit-push-and-open-pr/SKILL.md)
+- [describe-pr-in-one-paragraph](skills/describe-pr-in-one-paragraph/SKILL.md)
 - [address-pr-review-comments](skills/address-pr-review-comments/SKILL.md)
 - [draft-and-post-team-updates](skills/draft-and-post-team-updates/SKILL.md)
 - [ui-comparison-evidence](skills/ui-comparison-evidence/SKILL.md)
@@ -94,6 +95,7 @@ task; installing every overlapping skill is optional.
 | Responsive layout testing | `playwright-responsive-ui-testing` | `playwright-reactive-ux-testing` when a failure depends on event ordering or recovery |
 | Pull-request review | `review-pr-collaboratively` | `leave-code-review-comments-collaboratively` when turning findings into approved comments |
 | Commit, push, and open a pull request | `commit-push-and-open-pr` | `github-media-attachments` for screenshots or video in the description |
+| One-paragraph pull request description, by explicit invocation | `describe-pr-in-one-paragraph` | `commit-push-and-open-pr` when the pull request does not exist yet |
 | Review feedback on your own pull request | `address-pr-review-comments` | `commit-push-and-open-pr` to push the fixes; `draft-and-post-team-updates` to tell reviewers |
 | Status update or notification for a team channel or tracker | `draft-and-post-team-updates` | `explain-and-present` for the update's structure |
 | Before/after UI screenshots or scrolling video | `ui-comparison-evidence` | `github-media-attachments` for uploads; `flutter-text-scaling-accessibility` for Flutter scaling checks |
