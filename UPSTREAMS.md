@@ -81,6 +81,11 @@ Use the upstream license and documentation when adopting them.
 
 | Skill | Upstream | Installation |
 | --- | --- | --- |
+| `build-iterated-agentic-loop` | [humanlayer/skills](https://github.com/humanlayer/skills) | `npx skills add humanlayer/skills --skill build-iterated-agentic-loop` |
+| `codebase-design` | [mattpocock/skills](https://github.com/mattpocock/skills) | `npx skills add mattpocock/skills --skill codebase-design` |
+| `design-control-loop` | [humanlayer/skills](https://github.com/humanlayer/skills) | `npx skills add humanlayer/skills --skill design-control-loop` |
+| `diagnosing-bugs` | [mattpocock/skills](https://github.com/mattpocock/skills) | `npx skills add mattpocock/skills --skill diagnosing-bugs` |
+| `domain-modeling` | [mattpocock/skills](https://github.com/mattpocock/skills) | `npx skills add mattpocock/skills --skill domain-modeling` |
 | `find-skills` | [vercel-labs/skills](https://github.com/vercel-labs/skills) | `npx skills add vercel-labs/skills --skill find-skills` |
 | `flutter-adding-home-screen-widgets` | [flutter/skills](https://github.com/flutter/skills) | `npx skills add flutter/skills --skill flutter-adding-home-screen-widgets` |
 | `flutter-animating-apps` | [flutter/skills](https://github.com/flutter/skills) | `npx skills add flutter/skills --skill flutter-animating-apps` |
@@ -105,11 +110,25 @@ Use the upstream license and documentation when adopting them.
 | `flutter-theming-apps` | [flutter/skills](https://github.com/flutter/skills) | `npx skills add flutter/skills --skill flutter-theming-apps` |
 | `flutter-working-with-databases` | [flutter/skills](https://github.com/flutter/skills) | `npx skills add flutter/skills --skill flutter-working-with-databases` |
 | `graphql-schema` | [apollographql/skills](https://github.com/apollographql/skills) | `npx skills add apollographql/skills --skill graphql-schema` |
+| `grill-me` | [mattpocock/skills](https://github.com/mattpocock/skills) | `npx skills add mattpocock/skills --skill grill-me --skill grilling` |
+| `grill-with-docs` | [mattpocock/skills](https://github.com/mattpocock/skills) | `npx skills add mattpocock/skills --skill grill-with-docs --skill grilling --skill domain-modeling` |
+| `grilling` | [mattpocock/skills](https://github.com/mattpocock/skills) | `npx skills add mattpocock/skills --skill grilling` |
+| `handoff` | [mattpocock/skills](https://github.com/mattpocock/skills) | `npx skills add mattpocock/skills --skill handoff` |
+| `improve-claude-md` | [humanlayer/skills](https://github.com/humanlayer/skills) | `npx skills add humanlayer/skills --skill improve-claude-md` |
+| `improve-codebase-architecture` | [mattpocock/skills](https://github.com/mattpocock/skills) | `npx skills add mattpocock/skills --skill improve-codebase-architecture --skill codebase-design --skill grilling --skill domain-modeling` |
 | `playwright-best-practices` | [currents-dev/playwright-best-practices-skill](https://github.com/currents-dev/playwright-best-practices-skill) | `npx skills add currents-dev/playwright-best-practices-skill --skill playwright-best-practices` |
 | `postgresql-table-design` | [wshobson/agents](https://github.com/wshobson/agents) | `npx skills add wshobson/agents --skill postgresql-table-design` |
+| `prototype` | [mattpocock/skills](https://github.com/mattpocock/skills) | `npx skills add mattpocock/skills --skill prototype` |
 | `rails-expert` | [jeffallan/claude-skills](https://github.com/jeffallan/claude-skills) | `npx skills add jeffallan/claude-skills --skill rails-expert` |
 | `redis-development` | [redis/agent-skills](https://github.com/redis/agent-skills) | `npx skills add redis/agent-skills --skill redis-development` |
+| `show-me` | [humanlayer/skills](https://github.com/humanlayer/skills) | `npx skills add humanlayer/skills --skill show-me` |
+| `tdd` | [mattpocock/skills](https://github.com/mattpocock/skills) | `npx skills add mattpocock/skills --skill tdd --skill codebase-design` |
+| `teach` | [mattpocock/skills](https://github.com/mattpocock/skills) | `npx skills add mattpocock/skills --skill teach` |
+| `to-questionnaire` | [mattpocock/skills](https://github.com/mattpocock/skills) | `npx skills add mattpocock/skills --skill to-questionnaire` |
+| `visual-pr` | [humanlayer/skills](https://github.com/humanlayer/skills) | `npx skills add humanlayer/skills --skill visual-pr` |
 | `vue` | [antfu/skills](https://github.com/antfu/skills) | `npx skills add antfu/skills --skill vue` |
+| `wait-what` | [mattpocock/skills](https://github.com/mattpocock/skills) | `npx skills add mattpocock/skills --skill wait-what` |
+| `wizard` | [mattpocock/skills](https://github.com/mattpocock/skills) | `npx skills add mattpocock/skills --skill wizard` |
 
 Plugin-bundled skills remain managed by their plugins and are not copied here.
 
