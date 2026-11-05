@@ -51,6 +51,8 @@ Never describe an approved comment as posted. If a posting command is interrupte
 - Capture the requested behavior: local review only, draft comments, one-by-one approval, batch review, or team summary.
 - Record explicit prohibitions and later changes to them.
 - Default to review-only when posting authority is unclear.
+- When the user grants standing authority for a class of comments, such as "post the valid findings on each new PR", treat it as scoped to that session and that class. Validation before posting still applies. Reconfirm it in a new session.
+- When the user also grants standing approval authority, such as "approve when every comment is non-blocking", apply the approval envelope in [references/review-lenses.md](references/review-lenses.md): approve routine changes with the brief, brief and hold on behavior changes, and never approve high-risk paths under standing authority. Change requests always need an explicit ask.
 
 ### 2. Prepare the local review
 
@@ -71,7 +73,13 @@ Never describe an approved comment as posted. If a posting command is interrupte
   - missing but necessary workflow pieces;
   - optional enhancements or preferences.
 - Reassess findings when the user supplies product context. Downgrade, rewrite, or remove a finding that a clear product decision resolves.
-- Review with the lenses in [references/review-lenses.md](references/review-lenses.md). Read that reference for specification reviews, stateful workflows, authentication, concurrency, or scope discussions.
+- Verify the PR description's claims about previous behavior against the base branch or the live site, not only against the new code. A wrong claim in the description or in a test comment is a finding.
+- When the PR replaces a pattern, search the touched area for remaining instances of the old pattern. When it adds a helper, check whether an installed dependency or configuration already owns that behavior.
+- Review with the lenses in [references/review-lenses.md](references/review-lenses.md). Read that reference for specification reviews, stateful workflows, authentication, concurrency, scope discussions, design and clean-code lenses, and best-practice sourcing.
+
+When the diff spans more than one specialty, such as a framework, its tests, and a domain concern like SEO or infrastructure, delegate read-only specialist passes chosen from what the diff touches. Require each pass to research current best practices in primary sources for the installed versions, cite one source per claim, and return file, line, severity, evidence, and a draft comment. Validate every returned finding against the code, the installed dependency, or the live artifact before it becomes a candidate; drop what does not reproduce. The lead stays the only writer.
+
+Keep the passes independent: each reports only to the lead and does not message other reviewers or the implementing agents, because one reviewer's early guess can steer the rest, and their agreement then stops being independent evidence. Answer a reviewer's question about a shared contract, such as an exact log line, metric, or interface, from a verified source rather than from another reviewer's view. Require each finding to carry `[independent]`, or `[from peer, verified]` when it started from another reviewer, a prior review note, or an existing comment and the reviewer reproduced it. Count only independent reports as agreement, and settle disagreements against documentation and the repository's established patterns.
 
 ### 4. Explain every finding before drafting
 
@@ -87,7 +95,7 @@ Use a small Mermaid diagram when timing, state transitions, ownership, or multip
 
 ### 5. Draft a professional inline comment
 
-Anchor the comment to the narrowest relevant changed line. Use this shape:
+Anchor the comment to the narrowest relevant changed line. GitHub only accepts lines inside a diff hunk, so for a concern just outside the diff anchor on the nearest changed line in the same file and say where the code lives; put concerns with no changed file in the review body. Use Conventional Comments labels such as `issue (non-blocking):`, `suggestion:`, `question:`, and `nitpick (non-blocking):` unless the repository uses another convention. Use this shape:
 
 ```text
 Observation or concrete scenario.
@@ -100,6 +108,7 @@ Optional test or acceptance rule.
 - Make the comment self-contained: include enough of the concrete scenario for the author to understand the concern without reading the review conversation.
 - Avoid accusation, canned praise, excessive hedging, severity labels in the body, and references to AI unless the user requests them.
 - Request observable behavior before prescribing an implementation. Offer locking, atomic consumption, or similar mechanisms as examples when useful.
+- Before showing a draft, run the verification list in [references/review-lenses.md](references/review-lenses.md), including executing any code the comment proposes and checking the request against the PR's scope. Present only drafts that pass, and say what was run.
 - Show the file and line, the exact proposed text, and `post / revise / skip` choices.
 - Do not present the next comment until the current one is posted or skipped when working one at a time.
 
@@ -108,8 +117,9 @@ Optional test or acceptance rule.
 - Re-fetch the PR head immediately before posting.
 - Confirm the target path and line still belong to the current diff. Re-anchor or ask before posting if the PR changed.
 - Use an available GitHub connector or `gh` CLI. Post the exact approved body; do not silently polish it during submission.
+- When several comments are approved together, submit them as one review with event `COMMENT`, inline comments on `path`, `line`, and `side`, and a body that lists what was verified and the unanchored items. The author gets one notification and one place to read the context.
 - Treat a returned comment ID or URL as confirmation, share the link, then present the next draft.
-- Never submit an overall approval or change-request review unless the user explicitly asks for that separate action.
+- Never submit an overall approval or change-request review unless the user explicitly asks for that separate action or has granted standing approval authority inside the envelope above. Pin the approval to the head SHA you reviewed and name it in the body.
 
 ### 7. Close the review
 
