@@ -36,8 +36,9 @@ Configuration speaks for a live system only when that system loads it and
 nothing overrides it; diagrams, old reports, and your own notes only describe
 it, so cite them as the source or ask someone who can check. When the
 conclusion depends on an interpretation, such as which device a setting
-controls, confirm that premise too. Link every pull request, issue, or task, and
-show its identifier so readers can find it.
+controls, confirm that premise too. Link every pull request, issue, or task on a
+short phrase that says what the work is; add its identifier only when readers
+need it to search.
 
 When the readers are closer to the system than you, such as the people
 operating it, ask what they have seen or tried before proposing a step, and
