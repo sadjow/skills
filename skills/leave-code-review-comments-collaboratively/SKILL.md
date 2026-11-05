@@ -141,6 +141,8 @@ Use an available GitHub connector when it preserves the exact body and returns a
 
 Never reuse a digest after the head, target, or body changes. Never submit an overall approval, request-changes review, reaction, or separate summary comment unless the human explicitly authorizes that distinct action and exact wording.
 
+When several approved comments go out as one review and the API requires a body, keep that body to what the author acts on: the verdict and the validation evidence. Do not describe the review mode, the process, or the comments themselves; the inline comments already say what they are.
+
 Treat a comment as posted only when GitHub returns an ID or URL. Share the URL before moving to the next candidate.
 
 ## Close the comment session
