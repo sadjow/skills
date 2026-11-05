@@ -82,7 +82,11 @@ A disabled-looking button is not proof of idempotency.
 
 At each critical state:
 
-- compare `scrollWidth` with `clientWidth`;
+- compare `scrollWidth` with `clientWidth`, with user-supplied fields holding a
+  long value without spaces and collapsed sections opened; CSS
+  `overflow-wrap: break-word` does not lower a flex or grid item's minimum
+  width, so spaced fixture text can pass while one unbroken word widens the
+  page;
 - check important custom control dimensions;
 - verify overlays fit the visual viewport;
 - verify the final actionable control can scroll above fixed chrome;
