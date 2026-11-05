@@ -27,6 +27,10 @@ when selecting a process, supervisor, task, or job boundary.
 ## Protect data and effects
 
 - Keep trusted domain commands separate from transport and presentation.
+  Treat event and request parameters as untrusted: resolve the target from
+  server-held state or an actor-scoped query, and authorize the acting
+  identity inside the mutating command. Hiding a control is not
+  authorization, and permission to read is not permission to change.
 - Back race-sensitive validation with database constraints and locks at the
   aggregate that owns the invariant.
 - Keep external calls out of database transactions. Emit messages, enqueue
