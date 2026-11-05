@@ -54,6 +54,13 @@ frame a disagreement as a question unless the owning source settles it.
   inflating certainty or urgency, keep each caveat in the message itself rather
   than only in your note to the user, and ask rather than demand.
 - Make one request per message, placed where it will be seen.
+- Write for readers who see only this message. Before showing the draft,
+  reread it cold and remove every reference to, or contrast with, something
+  they never saw: an earlier draft, a question you decided not to ask, or an
+  instruction from the user. "A heads-up rather than a question" becomes "A
+  heads-up". Contrasts with what the readers did see, such as the previous
+  update or their own replies, stay. Do this before posting, because some
+  connectors cannot edit a sent message.
 - Write in the first person as the user, and commit them only to actions they
   have stated. Mention AI assistance only when the user wants it disclosed.
 - For structure, use the status-update or change-report outline from
