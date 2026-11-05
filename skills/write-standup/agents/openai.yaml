@@ -1,0 +1,4 @@
+interface:
+  display_name: "Write Standup"
+  short_description: "Write your stand-up from recent pull requests and issues"
+  default_prompt: "Use $write-standup to write my stand-up from what I did since the last one."

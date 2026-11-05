@@ -63,6 +63,7 @@ into your agent's skill directory. Reload the agent if needed for discovery.
 - [describe-pr-in-one-paragraph](skills/describe-pr-in-one-paragraph/SKILL.md)
 - [address-pr-review-comments](skills/address-pr-review-comments/SKILL.md)
 - [draft-and-post-team-updates](skills/draft-and-post-team-updates/SKILL.md)
+- [write-standup](skills/write-standup/SKILL.md)
 - [ui-comparison-evidence](skills/ui-comparison-evidence/SKILL.md)
 - [cold-ux-review](skills/cold-ux-review/SKILL.md)
 
@@ -98,6 +99,7 @@ task; installing every overlapping skill is optional.
 | One-paragraph pull request description, by explicit invocation | `describe-pr-in-one-paragraph` | `commit-push-and-open-pr` when the pull request does not exist yet |
 | Review feedback on your own pull request | `address-pr-review-comments` | `commit-push-and-open-pr` to push the fixes; `draft-and-post-team-updates` to tell reviewers |
 | Status update or notification for a team channel or tracker | `draft-and-post-team-updates` | `explain-and-present` for the update's structure |
+| Your stand-up from your own recent pull requests and issues | `write-standup` | `draft-and-post-team-updates` to post it; `github-team-delivery-review` for whole-team delivery |
 | Before/after UI screenshots or scrolling video | `ui-comparison-evidence` | `github-media-attachments` for uploads; `flutter-text-scaling-accessibility` for Flutter scaling checks |
 | Agent harness maintenance | `improve-project-agent-harness` | `evolve-agent-harness` when retaining a lesson from concrete feedback |
 | Name, rename, or split a skill | `name-agent-skills` | `skill-creator` for the rest of the skill; `upgrade-agent-skills` for a collection audit or migration |
