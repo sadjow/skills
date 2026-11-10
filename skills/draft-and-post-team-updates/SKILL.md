@@ -16,7 +16,7 @@ Settle these from the request, the project instructions, or one question:
   message or a reply. Prefer a reply in the thread where the work was already
   discussed, and read its recent messages so the draft builds on what the
   readers already said.
-- **Who reads it**: a technical team can take precise terms; executives,
+- **Who reads it**: a technical team can take technical terms; executives,
   clients, and other non-technical readers need the outcome and its effect
   without jargon.
 - **What they should do**: review, approve, test, decide, or only know.
