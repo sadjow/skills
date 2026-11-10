@@ -1,0 +1,4 @@
+interface:
+  display_name: "Next Step"
+  short_description: "Say where this session stands and what to do next"
+  default_prompt: "Use $next-step to tell me where this work stands and what the next step is."

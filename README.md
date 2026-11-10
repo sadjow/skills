@@ -77,6 +77,7 @@ into your agent's skill directory. Reload the agent if needed for discovery.
 - [upgrade-agent-skills](skills/upgrade-agent-skills/SKILL.md)
 - [browser-harness](skills/browser-harness/SKILL.md)
 - [tmux-project-services](skills/tmux-project-services/SKILL.md)
+- [next-step](skills/next-step/SKILL.md)
 
 The focused interaction and LiveView skills can be installed separately from the
 broader design and framework skills. Choose the narrowest workflow that fits the
@@ -101,6 +102,7 @@ task; installing every overlapping skill is optional.
 | Status update or notification for a team channel or tracker | `draft-and-post-team-updates` | `explain-and-present` for the update's structure |
 | Your stand-up from your own recent pull requests and issues | `write-standup` | `draft-and-post-team-updates` to post it; `github-team-delivery-review` for whole-team delivery |
 | Before/after UI screenshots or scrolling video | `ui-comparison-evidence` | `github-media-attachments` for uploads; `flutter-text-scaling-accessibility` for Flutter scaling checks |
+| Where a work session stands and what to do next | `next-step` | `explain-and-present` when the answer needs a longer briefing |
 | Agent harness maintenance | `improve-project-agent-harness` | `evolve-agent-harness` when retaining a lesson from concrete feedback |
 | Name, rename, or split a skill | `name-agent-skills` | `skill-creator` for the rest of the skill; `upgrade-agent-skills` for a collection audit or migration |
 | Create or refine one skill | `skill-creator` | `agent-skill-content-research` for domain knowledge gaps |
