@@ -63,6 +63,7 @@ into your agent's skill directory. Reload the agent if needed for discovery.
 - [describe-pr-in-one-paragraph](skills/describe-pr-in-one-paragraph/SKILL.md)
 - [address-pr-review-comments](skills/address-pr-review-comments/SKILL.md)
 - [draft-and-post-team-updates](skills/draft-and-post-team-updates/SKILL.md)
+- [make-wording-precise](skills/make-wording-precise/SKILL.md)
 - [write-standup](skills/write-standup/SKILL.md)
 - [ui-comparison-evidence](skills/ui-comparison-evidence/SKILL.md)
 - [cold-ux-review](skills/cold-ux-review/SKILL.md)
@@ -100,6 +101,7 @@ task; installing every overlapping skill is optional.
 | One-paragraph pull request description, by explicit invocation | `describe-pr-in-one-paragraph` | `commit-push-and-open-pr` when the pull request does not exist yet |
 | Review feedback on your own pull request | `address-pr-review-comments` | `commit-push-and-open-pr` to push the fixes; `draft-and-post-team-updates` to tell reviewers |
 | Status update or notification for a team channel or tracker | `draft-and-post-team-updates` | `explain-and-present` for the update's structure |
+| Wording that readers can take two ways, or text to shorten while it stays exact | `make-wording-precise` | `explain-and-present` when the content or its order is the problem; `draft-and-post-team-updates` to post the result |
 | Your stand-up from your own recent pull requests and issues | `write-standup` | `draft-and-post-team-updates` to post it; `github-team-delivery-review` for whole-team delivery |
 | Before/after UI screenshots or scrolling video | `ui-comparison-evidence` | `github-media-attachments` for uploads; `flutter-text-scaling-accessibility` for Flutter scaling checks |
 | Where a work session stands and what to do next | `next-step` | `explain-and-present` when the answer needs a longer briefing |
