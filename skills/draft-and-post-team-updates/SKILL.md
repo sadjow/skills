@@ -67,6 +67,10 @@ frame a disagreement as a question unless the owning source settles it.
   `$explain-and-present` when it is available. Otherwise use: state compared
   with the plan, what you need from the reader, progress, risks, and the next
   step.
+- For wording, apply `$make-wording-precise` when it is available, before you
+  show the draft. Otherwise reread each sentence for a second reading that a
+  reader could act on, and rewrite it with the name the readers see, a verb
+  that says what happens, and the limits of the claim.
 
 Use the syntax of the path the message will take. A connector or API takes the
 platform's markup, so check what it expects instead of assuming Markdown.

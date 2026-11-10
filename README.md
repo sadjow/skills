@@ -100,7 +100,7 @@ task; installing every overlapping skill is optional.
 | Commit, push, and open a pull request | `commit-push-and-open-pr` | `github-media-attachments` for screenshots or video in the description |
 | One-paragraph pull request description, by explicit invocation | `describe-pr-in-one-paragraph` | `commit-push-and-open-pr` when the pull request does not exist yet |
 | Review feedback on your own pull request | `address-pr-review-comments` | `commit-push-and-open-pr` to push the fixes; `draft-and-post-team-updates` to tell reviewers |
-| Status update or notification for a team channel or tracker | `draft-and-post-team-updates` | `explain-and-present` for the update's structure |
+| Status update or notification for a team channel or tracker | `draft-and-post-team-updates` | `explain-and-present` for the update's structure; `make-wording-precise` for its wording |
 | Wording that readers can take two ways, or text to shorten while it stays exact | `make-wording-precise` | `explain-and-present` when the content or its order is the problem; `draft-and-post-team-updates` to post the result |
 | Your stand-up from your own recent pull requests and issues | `write-standup` | `draft-and-post-team-updates` to post it; `github-team-delivery-review` for whole-team delivery |
 | Before/after UI screenshots or scrolling video | `ui-comparison-evidence` | `github-media-attachments` for uploads; `flutter-text-scaling-accessibility` for Flutter scaling checks |

@@ -132,6 +132,10 @@ an incident report, a status update, or a talk, read
   from verbs. Treat a sentence over about 25 words as a prompt to check it, not
   a rule. Chopping apart sentences that need "because", "unless", or "so" makes
   reasoning harder.
+- **One reading per sentence.** For text that will be sent or published, apply
+  `$make-wording-precise` when it is available, after the content and its
+  order are settled. Otherwise reread each sentence for a second reading that
+  a reader could act on, and rewrite it until one reading remains.
 - **Choose the form by the shape of the content**:
   - prose for reasons, trade-offs, and causal chains, because connecting words
     carry the logic;
