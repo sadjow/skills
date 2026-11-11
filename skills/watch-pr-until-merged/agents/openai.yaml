@@ -1,0 +1,4 @@
+interface:
+  display_name: "Watch PR Until Merged"
+  short_description: "Address review comments and CI, then merge when ready"
+  default_prompt: "Use $watch-pr-until-merged to keep watching my pull request, address valid review comments, and merge it once it is ready and CI passes."

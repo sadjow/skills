@@ -115,6 +115,8 @@ when reviewers resolve their own threads.
   scheduled task, to repeat collect, verify, fix, and respond for new feedback
   within the same authorized scope. Stop when the pull request merges or
   closes, or when an item needs the user.
+- When the request is to continue until the pull request is merged, use
+  `$watch-pr-until-merged` when it is available.
 
 ## Report
 
