@@ -94,8 +94,10 @@ User-level instructions about commit and pull-request wording still apply.
      to upload;
    - a changelog grouped by area for a large branch.
 7. Write the body to a file and run `gh pr create --title <title> --body-file
-   <file>`, adding `--draft` when asked or when the project opens drafts by
-   default. For an update, re-read the current body immediately before
+   <file>`, which opens the pull request ready for review. Add `--draft` only
+   when the user asks for a draft or the project's written instructions call
+   for drafts; draft pull requests already in the repository are not a reason.
+   For an update, re-read the current body immediately before
    `gh pr edit --body-file <file>`. If someone changed it after you read it,
    merge their edits instead of overwriting them.
 8. If creation is interrupted, check `gh pr list --head <branch>` before
